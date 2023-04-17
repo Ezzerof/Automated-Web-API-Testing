@@ -1,5 +1,6 @@
 package api.katietest;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,6 +25,15 @@ public class LoginInvalidDetailsTest {
 //        response = given().log().all().when().post(postLoginDetails_url + "?password=1234&email=bob@bob.com");
     }
 
+    @Test
+    @DisplayName("Check the Content Type")
+    void checkTheContentType() {
+        response
+                .then()
+                .assertThat()
+                .contentType(ContentType.HTML);
+    }
+
     @Nested
     @DisplayName("Tests for the body")
     class TestsForTheBody{
@@ -42,7 +52,6 @@ public class LoginInvalidDetailsTest {
         }
 
     }
-
 
     @Nested
     @DisplayName("Testing Headers and Status Code")

@@ -32,7 +32,7 @@ public class EmptySearchParmaProducts {
         response
                 .then()
                 .assertThat()
-                .contentType(ContentType.JSON);
+                .contentType(ContentType.HTML);
     }
 
     @Nested
