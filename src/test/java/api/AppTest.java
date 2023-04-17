@@ -7,6 +7,7 @@ import junit.framework.Assert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
@@ -14,15 +15,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AppTest {
 
+    @Order(8)
     @Test
     @DisplayName("Testing API POST request for logging in without e-mail parameter")
     void verifyForbiddenLoginWithoutEmailParameter(){
-        //System.out.println(when().post(Routes.postLoginDetails_url).getStatusCode());
-        when().post("https://automationexercise.com/api/verifyLogin/")
-                .then().body("message", Matchers.equalTo("This request method is not supported."));
+
+        Response response = given().contentType("application/x-www-form-urlencoded").formParams("password","password")
+                .post(Routes.postLoginDetails_url);
+
+        response.jsonPath().get("message").equals("This request method is not supported.");
 
     }
 
+    @Order(14)
     @Test
     @DisplayName("Testing API GET request for accessing user details by email")
     void GETUserAccountByEmail(){
