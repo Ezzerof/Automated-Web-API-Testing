@@ -59,6 +59,7 @@ public class JamesTests{
       deleteUser();
       assertThat(getResponse().body().jsonPath().getString("message"), equalTo("User created!"));
     }
+
   }
 
   @Nested
