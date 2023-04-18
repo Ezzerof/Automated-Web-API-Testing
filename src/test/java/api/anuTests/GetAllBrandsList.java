@@ -189,11 +189,6 @@ public class GetAllBrandsList {
 
 
 
-
-
-
-
-
         @Test
         @DisplayName("Test the Date header")
         void testTheDateHeader() {
