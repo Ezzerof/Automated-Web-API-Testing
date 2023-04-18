@@ -1,5 +1,6 @@
 package api.sahan;
 
+import api.endpoints.Routes;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -15,7 +16,7 @@ import static io.restassured.RestAssured.given;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SahanTestFileOne {
+public class GetUserDetailsByEmail {
 
 
 
@@ -24,6 +25,9 @@ public class SahanTestFileOne {
     private static Response response;
 
     public static Response responseWithVariable;
+
+    public static String query = "?email";
+
     @BeforeAll
     public static void createResponseSpecification(){
         responseSpecification = new ResponseSpecBuilder()
@@ -39,12 +43,12 @@ public class SahanTestFileOne {
         response =
                 given()
                         .when()
-                        .get("https://automationexercise.com/api/getUserDetailByEmail")
+                        .get(Routes.getUserAccountByEmail_url)
                         .then().extract().response();
         responseWithVariable =
                 given()
                 .when()
-                .get("https://automationexercise.com/api/getUserDetailByEmail?email")
+                .get(Routes.getUserAccountByEmail_url+query)
                         .then().extract().response();
 
 
@@ -53,22 +57,6 @@ public class SahanTestFileOne {
        // response = get("https://automationexercise.com/api/getUserDetailByEmail");
 
     }
-
-
-    @Test
-    @DisplayName("test 1")
-    public void test1() {
-        System.out.println(response.asString());
-        System.out.println(responseWithVariable.getBody().asString());
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getStatusLine());
-        System.out.println(response.getHeader("content-type"));
-        System.out.println(response.getTime());
-
-      //  System.out.println(get("/email").then().body("user.id", equalTo(17867)));
-   //     System.out.println(response.getClass());
-
-        }
 
 
    @Nested
