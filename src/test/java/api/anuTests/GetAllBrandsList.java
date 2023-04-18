@@ -124,11 +124,79 @@ public class GetAllBrandsList {
         }
 
         @Test
+        @DisplayName("Test the Transfer-Encoding header")
+        void testTheTransferEncodingHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("Transfer-Encoding", "chunked");
+
+        }
+
+        @Test
+        @DisplayName("Test the Connection header")
+        void testTheConnectionHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("Connection", "keep-alive");
+
+        }
+
+        @Test
+        @DisplayName("Test the vary header")
+        void testTheVaryHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("vary", "Accept,Cookie,Accept-Encoding");
+
+        }
+
+        @Test
+        @DisplayName("Test the referrer-policy header")
+        void testTheReferrerPolicyHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("referrer-policy", "same-origin");
+
+        }
+
+        @Test
+        @DisplayName("Test the x-frame-options header")
+        void testTheX_frame_optionsHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("x-frame-options", "DENY");
+
+        }
+
+        @Test
+        @DisplayName("Test the x-content-type-options header")
+        void testTheX_content_type_optionsHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("x-content-type-options", "nosniff");
+
+        }
+
+        @Test
+        @DisplayName("Test the allow header")
+        void testTheAllowHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("allow", "DELETE, OPTIONS, PUT, POST, GET");
+
+        }
+
+        @Test
+        @DisplayName("Test the CF-Cache-Status header")
+        void testTheCF_Cache_StatusHeader() {
+
+            response.then().spec(responseSpecification).and().assertThat().header("CF-Cache-Status", "DYNAMIC");
+
+        }
+
+
+
+
+
+
+
+
+        @Test
         @DisplayName("Test the Date header")
         void testTheDateHeader() {
-
-
-
             try {
                 response.then().spec(responseSpecification).and().assertThat().header(String.valueOf(parseDateStrictly("Date")), equalTo(new Date()));
             } catch (ParseException e) {
