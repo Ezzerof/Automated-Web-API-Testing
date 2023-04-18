@@ -1,4 +1,4 @@
-package api.endpoints.anu;
+package api.anuTests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
