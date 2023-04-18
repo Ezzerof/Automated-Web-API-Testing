@@ -50,6 +50,7 @@ public class GetAllBrandsList {
 
 
     @Nested
+    @Order(1)
     @DisplayName("Testing responseBody")
     class TestingResponseBody {
 
@@ -77,19 +78,19 @@ public class GetAllBrandsList {
 
 
         }
-    }
 
 
-    @Test
-    @DisplayName("Testing whether id 2 H&M brand ")
-    void testingWhetherId2HAndMBrand() {
-        responseSpecification.body("brands.find { it.id == 2 }.brand", equalTo("H&M"));
-    }
+        @Test
+        @DisplayName("Testing whether id 2 H&M brand ")
+        void testingWhetherId2HAndMBrand() {
+            responseSpecification.body("brands.find { it.id == 2 }.brand", equalTo("H&M"));
+        }
 
-    @Test
-    @DisplayName("Testing whether id 3 Madame brand ")
-    void testingWhetherId3MadameBrand() {
-        responseSpecification.body("brands.find { it.id == 3 }.brand", equalTo("Madame"));
+        @Test
+        @DisplayName("Testing whether id 3 Madame brand ")
+        void testingWhetherId3MadameBrand() {
+            responseSpecification.body("brands.find { it.id == 3 }.brand", equalTo("Madame"));
+        }
     }
 
 
@@ -114,6 +115,7 @@ public class GetAllBrandsList {
 
         }
 
+
         @Test
         @DisplayName("Test the content-type header")
         void testTheContentTypeHeader() {
@@ -136,6 +138,7 @@ public class GetAllBrandsList {
         }
     }
 }
+
 
 
 
