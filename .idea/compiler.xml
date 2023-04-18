@@ -10,5 +10,13 @@
         <module name="Automated-Web-API-Testing" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MiniAutomatedWebAndAPITestingProject" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MiniAutomatedWebAndAPITestingProject" options="" />
+    </option>
   </component>
 </project>
