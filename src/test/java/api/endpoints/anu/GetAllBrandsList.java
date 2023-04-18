@@ -130,6 +130,7 @@ public class GetAllBrandsList {
         void testTheDateHeader() {
 
 
+
             try {
                 response.then().spec(responseSpecification).and().assertThat().header(String.valueOf(parseDateStrictly("Date")), equalTo(new Date()));
             } catch (ParseException e) {
