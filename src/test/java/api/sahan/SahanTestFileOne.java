@@ -4,12 +4,14 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.get;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
+//import static org.hamcrest.MatcherAssert.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -68,6 +70,7 @@ public class SahanTestFileOne {
 
         }
 
+
    @Nested
    public class StatusCheckers{
 
@@ -81,8 +84,47 @@ public class SahanTestFileOne {
                    .statusCode(200);
        }
 
+       @Test
+       @DisplayName("Test response code is correct")
+       public void testResponseCodeIsCorrect() {
+           assertThat(
+                   responseWithVariable
+                           .jsonPath()
+                           .getInt("responseCode"), equalTo(200));
+           }
+
+       @Test
+       @DisplayName("Test that response code is 400 when no email parameters are inserted")
+       public void testThatResponseCodeIs400WhenNoEmailParametersAreInserted() {
+           assertThat(
+                   response
+                           .jsonPath()
+                           .getInt("responseCode"), equalTo(400));
+           }
+   }
 
 
+   @Nested
+   public class HeaderTests{
+        @Test
+        @DisplayName("Test header size is always 18")
+        public void testHeaderSizeIsAlways18() {
+
+            int sizeOfHeaders = response.getHeaders().size();
+            MatcherAssert.assertThat(sizeOfHeaders, is(18));
+
+            }
+
+        @Test
+        @DisplayName("Check the server is cloudflare")
+        public void checkTheServerIsCloudflare() {
+
+
+            response
+                    .then()
+                    .assertThat()
+                    .header("Server", "cloudflare");
+            }    
    }
 
 
@@ -105,23 +147,12 @@ public class SahanTestFileOne {
            assertThat(
                    responseWithVariable
                            .jsonPath()
-                           .getString("user.name"),equalTo("Rana")
-           );
+                           .getString("user.name"),equalTo("Rana"));
            }
 
 
 
 
    }
-
-
-
-
-
-
-
-
-
-
 
 }
