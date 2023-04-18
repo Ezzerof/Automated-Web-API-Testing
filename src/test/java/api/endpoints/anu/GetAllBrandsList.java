@@ -49,10 +49,6 @@ public class GetAllBrandsList {
     }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Anu
     @Nested
     @Order(1)
     @DisplayName("Testing responseBody")
