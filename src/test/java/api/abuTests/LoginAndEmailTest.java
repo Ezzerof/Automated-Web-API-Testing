@@ -21,7 +21,9 @@ public class LoginAndEmailTest {
         Response response = given().contentType("application/x-www-form-urlencoded").formParams("password","password")
                 .post(Routes.postLoginDetails_url);
 
+        //checking body contains the correct error message
         response.jsonPath().get("message").equals("This request method is not supported.");
+        response.jsonPath().get("responseCode").equals(405);//and checking response code stored in response body(json) is correct
 
     }
 
@@ -33,9 +35,15 @@ public class LoginAndEmailTest {
         //when().get(Routes.getUserAccountByEmail_url).then().body("message",
         //        Matchers.equalTo("Bad request, email parameter is missing in GET request."));
 
-        when().get(Routes.getUserAccountByEmail_url).getBody().print();
+        when().get(Routes.getUserAccountByEmail_url).getBody().print();//prints json content of body
+
+        //checking body contains the correct error message
         assertThat(when().get(Routes.getUserAccountByEmail_url).jsonPath().get("message")
                 , Matchers.equalTo("Bad request, email parameter is missing in GET request."));
+
+        assertThat(when().get(Routes.getUserAccountByEmail_url).jsonPath().get("responseCode")
+                , Matchers.equalTo(400));//and checking response code stored in response body(json) is correct
+
 
 
     }
