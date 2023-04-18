@@ -107,6 +107,7 @@ public class GetAllBrandsList {
         }
 
 
+
         @Test
         @DisplayName("Test the server header")
         void testTheServerHeader() {
