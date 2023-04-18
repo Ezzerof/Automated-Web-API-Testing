@@ -18,6 +18,7 @@
 
 # Project Roles:
 
+
 | Role         | Contributor         | Contact                         |
 |--------------|---------------------|---------------------------------|
 | Scrum Master | Katie Olivia Hulme  | katiehulme@spartaglobal.com     |
