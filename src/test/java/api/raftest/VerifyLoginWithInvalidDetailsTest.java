@@ -1,11 +1,13 @@
 package api.raftest;
 
 import api.endpoints.Routes;
+import api.katietest.CreateResponseWithParams;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import static api.endpoints.Routes.postLoginDetails_url;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,12 +23,13 @@ public class VerifyLoginWithInvalidDetailsTest {
     @TestTemplate
     @DisplayName("Trying to Verify user account")
     @ParameterizedTest(name = "{index} - Name: {0}")
-    @CsvFileSource(files = "src\\test\\resources\\InvalidUserAccount.csv", numLinesToSkip = 1)
+    @CsvFileSource(files = "src/test/resources/VerifyUserAccount.csv", numLinesToSkip = 1)
     public void init(String email, String password) {
-        response = given()
-                .contentType("application/x-www-form-urlencoded")
-                .formParams("email", email, "password", password)
-                .post(Routes.postLoginDetails_url);
+        response = CreateResponseWithParams.addLoginCredentials(postLoginDetails_url, email, password);
+//        response = given()
+//                .contentType("application/x-www-form-urlencoded")
+//                .formParams("email", "bob@bob.com", "password", "12345")
+//                .post(Routes.postLoginDetails_url);
     }
 
     @Order(2)

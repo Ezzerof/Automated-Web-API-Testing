@@ -21,8 +21,9 @@ public class EmptySearchParmaProducts {
 
     @BeforeAll
     public static void init() {
-        response = given().log().all().contentType("application/x-www-form-urlencoded")
-                .formParams("products", "").post(postSearchProduct_url);
+        response = CreateResponseWithParams.addProductToSearch(postSearchProduct_url, "");
+//        response = given().log().all().contentType("application/x-www-form-urlencoded")
+//                .formParams("products", "").post(postSearchProduct_url);
 //        response = given().log().all().when().post(postSearchProduct_url + "?products=");
     }
 
