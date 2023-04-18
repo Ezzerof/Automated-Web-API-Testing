@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static api.endpoints.Routes.postLoginDetails_url;
 import static api.endpoints.Routes.postSearchProduct_url;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.post;
@@ -21,8 +20,10 @@ public class EmptySearchParmaProducts {
 
     @BeforeAll
     public static void init() {
-        response = given().log().all().contentType("application/x-www-form-urlencoded")
-                .formParams("products", "").post(postSearchProduct_url);
+        response = CreateResponseWithParams.addProductToSearch(postSearchProduct_url, "");
+
+//        response = given().log().all().contentType("application/x-www-form-urlencoded")
+//                .formParams("products", "").post(postSearchProduct_url);
 //        response = given().log().all().when().post(postSearchProduct_url + "?products=");
     }
 

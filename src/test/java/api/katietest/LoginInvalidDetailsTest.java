@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static api.endpoints.Routes.postLoginDetails_url;
-import static api.endpoints.Routes.postSearchProduct_url;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -18,9 +17,10 @@ public class LoginInvalidDetailsTest {
     private static Response response;
     @BeforeAll
     public static void inti(){
-        response = given().log().all().contentType("application/x-www-form-urlencoded")
-                .formParams("email", "bob@bob.com", "password", "12345")
-                .post(postLoginDetails_url);
+        response = CreateResponseWithParams.addLoginCredentials(postLoginDetails_url, "bob@bob.com", "12345");
+//        response = given().log().all().contentType("application/x-www-form-urlencoded")
+//                .formParams("email", "bob@bob.com", "password", "12345")
+//                .post(postLoginDetails_url);
 
 //        response = given().log().all().when().post(postLoginDetails_url + "?password=1234&email=bob@bob.com");
     }
