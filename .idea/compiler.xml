@@ -10,5 +10,8 @@
         <module name="Automated-Web-API-Testing" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Room1-Automated-Web-API-Testing" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
