@@ -1,4 +1,4 @@
-package api;
+package api.abuTests;
 
 import api.endpoints.Routes;
 import io.restassured.response.Response;
