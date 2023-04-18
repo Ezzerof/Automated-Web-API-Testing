@@ -21,11 +21,11 @@ public class VerifyLoginWithInvalidDetailsTest {
     @TestTemplate
     @DisplayName("Trying to Verify user account")
     @ParameterizedTest(name = "{index} - Name: {0}")
-    @CsvFileSource(files = "src\\test\\resources\\InvalidUserAccount.csv", numLinesToSkip = 1)
+    @CsvFileSource(files = "src/test/resources/VerifyUserAccount.csv", numLinesToSkip = 1)
     public void init(String email, String password) {
         response = given()
                 .contentType("application/x-www-form-urlencoded")
-                .formParams("email", email, "password", password)
+                .formParams("email", "bob@bob.com", "password", "12345")
                 .post(Routes.postLoginDetails_url);
     }
 
