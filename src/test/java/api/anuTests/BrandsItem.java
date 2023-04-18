@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BrandsItem{
 
+
 	@JsonProperty("id")
 	private Integer id;
 
