@@ -1,4 +1,4 @@
-package chloetests;
+package api.chloetests;
 
 import api.endpoints.Routes;
 import io.restassured.response.Response;

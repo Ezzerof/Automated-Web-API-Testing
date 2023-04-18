@@ -1,4 +1,4 @@
-package api.chrisTests;
+package api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
