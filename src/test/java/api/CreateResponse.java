@@ -58,6 +58,14 @@ public class CreateResponse {
     return response;
   }
 
+  public static Response post(String url, String item1, Object item2, Object item3, Object item4){
+    response = given()
+        .contentType("application/x-www-form-urlencoded")
+        .formParams(item1,item2,item3,item4)
+        .post(url);
+    return response;
+  }
+
    /*
 
     ~~GET REQUESTS~~
