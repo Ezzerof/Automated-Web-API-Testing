@@ -27,6 +27,7 @@
 | Dev/Tester   | Chloe Vera Turner   | cturner@spartaglobal.com        |
 | Dev/Tester   | Sahan Seneviratne   | sseneviratne@spartaglobal.com   |
 | Dev/Tester   | Marcella chessa     | mchessa@spartaglobal.com        |
+| Dev/Tester   | Abubakar Muhammad   | amuhammad@spartaglobal.com      |
 | Dev/Tester   | James Reed          | jreed@spartaglobal.com          |
 | Dev/Tester   | Rafael Lopes        | rlopes@spartaglobal.com         |
 | Dev/Tester   | Ajay Balakrishnan   | abalakrishnan@spartaglobal.com  |
