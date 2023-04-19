@@ -26,7 +26,7 @@ public class VerifyLoginWithValidDetailsTest {
         @Test
         @DisplayName("Login with Valid Details")
         void testLoginWithValidDetails() {
-            items = JsonParser.createMap("src\\test\\resources\\user.json");
+            items = JsonParser.createMap("src/test/resources/user.json");
             response = CreateResponse.post(items, "email", "password");
 
         }
