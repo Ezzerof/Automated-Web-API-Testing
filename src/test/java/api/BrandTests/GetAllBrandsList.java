@@ -1,5 +1,6 @@
 package api.BrandTests;
 
+import api.components.CreateResponse;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -14,17 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 import static api.components.Routes.getBrands_url;
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.given;
-import static io.restassured.path.json.JsonPath.from;
-import static org.apache.commons.lang3.time.DateUtils.parseDate;
 import static org.apache.commons.lang3.time.DateUtils.parseDateStrictly;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import api.components.CreateResponse;
 
 public class GetAllBrandsList {
     private static final Logger logger = LogManager.getLogger(GetAllBrandsList.class);
@@ -107,7 +100,6 @@ public class GetAllBrandsList {
         }
 
 
-
         @Test
         @DisplayName("Test the server header")
         void testTheServerHeader() {
@@ -177,7 +169,7 @@ public class GetAllBrandsList {
         @DisplayName("Test the allow header")
         void testTheAllowHeader() {
 
-            response.then().spec(responseSpecification).and().assertThat().header("allow", "DELETE, OPTIONS, GET, PUT, POST");
+            response.then().spec(responseSpecification).and().assertThat().header("allow", "POST, PUT, OPTIONS, GET, DELETE");
 
         }
 
@@ -188,7 +180,6 @@ public class GetAllBrandsList {
             response.then().spec(responseSpecification).and().assertThat().header("CF-Cache-Status", "DYNAMIC");
 
         }
-
 
 
         @Test
