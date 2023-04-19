@@ -177,7 +177,7 @@ public class GetAllBrandsList {
         @DisplayName("Test the allow header")
         void testTheAllowHeader() {
 
-            response.then().spec(responseSpecification).and().assertThat().header("allow", "PUT, GET, OPTIONS, DELETE, POST");
+            response.then().spec(responseSpecification).and().assertThat().header("allow", "DELETE, OPTIONS, GET, PUT, POST");
 
         }
 
