@@ -1,7 +1,7 @@
-package api.abuTests;
+package api.LoginTests;
 
-import api.CreateResponse;
-import api.endpoints.Routes;
+import api.components.CreateResponse;
+import api.components.Routes;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;

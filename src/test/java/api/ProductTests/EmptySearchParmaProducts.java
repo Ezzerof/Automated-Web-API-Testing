@@ -1,4 +1,4 @@
-package api.katietest;
+package api.ProductTests;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -8,14 +8,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static api.endpoints.Routes.postLoginDetails_url;
-import static api.endpoints.Routes.postSearchProduct_url;
+import static api.components.Routes.postSearchProduct_url;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.post;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import api.CreateResponse;
+import api.components.CreateResponse;
 
 public class EmptySearchParmaProducts {
 

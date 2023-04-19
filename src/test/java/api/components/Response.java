@@ -1,6 +1,8 @@
-package api.anuTests;
+package api.components;
 
 import java.util.List;
+
+import api.BrandTests.BrandsItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Response{

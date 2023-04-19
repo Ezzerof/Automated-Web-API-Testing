@@ -1,7 +1,7 @@
-package api.marcella.test;
+package api.ProductTests;
 
-import api.CreateResponse;
-import api.endpoints.Routes;
+import api.components.CreateResponse;
+import api.components.Routes;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;

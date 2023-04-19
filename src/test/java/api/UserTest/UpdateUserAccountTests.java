@@ -1,7 +1,7 @@
-package api.katietest;
+package api.UserTest;
 
-import api.CreateResponse;
-import api.JsonParser;
+import api.components.CreateResponse;
+import api.components.JsonParser;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static api.endpoints.Routes.putUserAccount_url;
+import static api.components.Routes.putUserAccount_url;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;

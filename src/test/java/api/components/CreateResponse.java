@@ -1,11 +1,10 @@
-package api;
+package api.components;
 
 import static io.restassured.RestAssured.given;
 
 import io.restassured.response.Response;
 
 import java.util.Map;
-import api.endpoints.Routes;
 
 public class CreateResponse {
   private static Response response;

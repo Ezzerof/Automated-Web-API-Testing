@@ -1,7 +1,7 @@
-package api.sahan;
+package api.UserTest;
 
-import api.CreateResponse;
-import api.endpoints.Routes;
+import api.components.CreateResponse;
+import api.components.Routes;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

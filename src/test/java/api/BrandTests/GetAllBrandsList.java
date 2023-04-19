@@ -1,4 +1,4 @@
-package api.anuTests;
+package api.BrandTests;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import static api.endpoints.Routes.getBrands_url;
+import static api.components.Routes.getBrands_url;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import api.CreateResponse;
+import api.components.CreateResponse;
 
 public class GetAllBrandsList {
     private static final Logger logger = LogManager.getLogger(GetAllBrandsList.class);

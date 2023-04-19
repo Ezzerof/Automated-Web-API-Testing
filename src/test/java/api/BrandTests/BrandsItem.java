@@ -1,4 +1,4 @@
-package api.anuTests;
+package api.BrandTests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

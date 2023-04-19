@@ -1,14 +1,13 @@
-package api.chloetests;
+package api.LoginTests;
 
-import api.CreateResponse;
-import api.endpoints.Routes;
+import api.components.CreateResponse;
+import api.components.Routes;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
