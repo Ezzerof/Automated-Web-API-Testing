@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import static api.endpoints.Routes.postLoginDetails_url;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -24,7 +25,7 @@ public class VerifyLoginWithValidDetailsTest {
     @ParameterizedTest(name = "{index} - Name: {0}")
     @CsvFileSource(files = "src/test/resources/VerifyUserAccount.csv", numLinesToSkip = 1)
     public void init(String email, String password) {
-        response = CreateResponse.post(Routes.postLoginDetails_url, "email", email, "password", password);
+        response = CreateResponse.post(postLoginDetails_url, "email", email, "password", password);
 
     }
 

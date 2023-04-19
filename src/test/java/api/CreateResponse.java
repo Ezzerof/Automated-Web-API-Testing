@@ -106,4 +106,16 @@ public class CreateResponse {
    response = given().when().delete(url).then().extract().response();
    return response;
  }
+
+ // PUT Request
+// birth_date, birth_month, birth_year, firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number
+  public static Response put(String url,
+                             Map<String, String> user){
+    response = given()
+            .contentType("application/x-www-form-urlencoded")
+            .formParams(user)
+            .put(url);
+    return response;
+
+  }
 }
