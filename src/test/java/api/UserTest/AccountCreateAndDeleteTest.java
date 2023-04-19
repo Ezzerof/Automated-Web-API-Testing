@@ -1,4 +1,4 @@
-package api.jamestests;
+package api.UserTest;
 
 import static io.restassured.RestAssured.given;
 
@@ -19,9 +19,9 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Map;
-import api.CreateResponse;
-import api.JsonParser;
-import api.endpoints.Routes;
+import api.components.CreateResponse;
+import api.components.JsonParser;
+import api.components.Routes;
 
 
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)

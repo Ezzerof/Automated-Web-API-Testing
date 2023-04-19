@@ -1,4 +1,4 @@
-package api.marcella.test;
+package api.ProductTests;
 
 import io.restassured.response.Response;
 
