@@ -1,5 +1,6 @@
 package api.chloetests;
 
+import api.CreateResponse;
 import api.endpoints.Routes;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,7 +20,7 @@ public class DeleteVerifyLoginTest {
 
     @BeforeAll
     public static void createResponse() {
-      response = given().when().delete(Routes.postLoginDetails_url).then().extract().response();
+      response = CreateResponse.delete(Routes.postLoginDetails_url);
 
     }
 

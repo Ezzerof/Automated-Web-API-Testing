@@ -15,16 +15,20 @@ import static io.restassured.RestAssured.post;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import api.CreateResponse;
+
 public class EmptySearchParmaProducts {
 
     private static Response response;
 
     @BeforeAll
     public static void init() {
-        response = CreateResponseWithParams.addProductToSearch(postSearchProduct_url, "");
+        response = CreateResponse.post(postSearchProduct_url, "products", "");
 //        response = given().log().all().contentType("application/x-www-form-urlencoded")
 //                .formParams("products", "").post(postSearchProduct_url);
 //        response = given().log().all().when().post(postSearchProduct_url + "?products=");
+
+
     }
 
     @Test

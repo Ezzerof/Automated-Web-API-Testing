@@ -1,5 +1,6 @@
 package api.abuTests;
 
+import api.CreateResponse;
 import api.endpoints.Routes;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
@@ -17,16 +18,11 @@ public class LoginAndEmailTest {
     @Test
     @DisplayName("Testing API POST request for logging in without e-mail parameter")
     void verifyForbiddenLoginWithoutEmailParameter(){
-
-        Response response = given().contentType("application/x-www-form-urlencoded").formParams("password","password")
-                .post(Routes.postLoginDetails_url);
-
+        Response response = CreateResponse.post("password", Routes.postUserAccount_url);
         //checking body contains the correct error message
         response.jsonPath().get("message").equals("This request method is not supported.");
         response.jsonPath().get("responseCode").equals(405);//and checking response code stored in response body(json) is correct
-
     }
-
     @Order(14)
     @Test
     @DisplayName("Testing API GET request for accessing user details by email")
@@ -44,10 +40,6 @@ public class LoginAndEmailTest {
         assertThat(when().get(Routes.getUserAccountByEmail_url).jsonPath().get("responseCode")
                 , Matchers.equalTo(400));//and checking response code stored in response body(json) is correct
 
-
-
     }
-
-
 
 }

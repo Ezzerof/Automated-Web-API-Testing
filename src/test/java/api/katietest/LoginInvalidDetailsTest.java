@@ -14,11 +14,13 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import api.CreateResponse;
+
 public class LoginInvalidDetailsTest {
     private static Response response;
     @BeforeAll
     public static void inti(){
-        response = CreateResponseWithParams.addLoginCredentials(postLoginDetails_url, "bob@bob.com", "12345");
+        response = CreateResponse.post(postLoginDetails_url, "email", "bob@bob.com","password", "12345");
 //        response = given().log().all().contentType("application/x-www-form-urlencoded")
 //                .formParams("email", "bob@bob.com", "password", "12345")
 //                .post(postLoginDetails_url);

@@ -19,6 +19,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Map;
+import api.CreateResponse;
 import api.JsonParser;
 import api.endpoints.Routes;
 
@@ -29,25 +30,6 @@ public class AccountCreateAndDeleteTest {
   static Response response;
   static Map<String, String> item;
 
-  public static Response createUser(){
-    response=given().contentType("application/x-www-form-urlencoded").formParams(item).post(Routes.postUserAccount_url);
-    return response;
-  }
-
-  public static Response deleteUser(){
-    response=given().contentType("application/x-www-form-urlencoded").formParams(item.keySet().toArray()[1].toString(), item.get("email"), item.keySet().toArray()[2].toString(), item.get("password")).delete(Routes.deleteUserAccount_url);
-    return response;
-  }
-
-  public static Response deleteUserWrongData(){
-    response = given().contentType("application/x-www-form-urlencoded").formParam("false").delete(Routes.deleteUserAccount_url);
-    return response;
-  }
-
-  public static Response createUserWrongData(){
-    response=given().contentType("application/x-www-form-urlencoded").formParam("false").post(Routes.postUserAccount_url);
-    return response;
-  }
   @BeforeAll
   static void init(){
     item = JsonParser.createMap("src/test/resources/user.json");
@@ -66,9 +48,8 @@ public class AccountCreateAndDeleteTest {
     class SuccessfulDeleteRequestCheck {
       @BeforeAll
       void delete() {
-        AccountCreateAndDeleteTest.deleteUser();
+        response = CreateResponse.delete(item, "email", "password", Routes.deleteUserAccount_url);
       }
-
       @Order(1)
       @Test
       @DisplayName("Check the response code")
@@ -88,6 +69,7 @@ public class AccountCreateAndDeleteTest {
       @DisplayName("Check response body for success message")
       void checkResponseBodyForSuccessMesssage() {
         assertThat(response.body().jsonPath().getString("message"), equalTo("Account deleted!"));
+
       }
     }
     @Order(2)
@@ -99,7 +81,7 @@ public class AccountCreateAndDeleteTest {
 
       @BeforeAll
       void delete() {
-        AccountCreateAndDeleteTest.deleteUserWrongData();
+        response = CreateResponse.delete("false", Routes.deleteUserAccount_url);
       }
       @Order(1)
       @Test
@@ -135,7 +117,7 @@ public class AccountCreateAndDeleteTest {
     class successfulCreateUserChecks {
       @BeforeAll
       void createUser() {
-        AccountCreateAndDeleteTest.createUser();
+        response = CreateResponse.post(item, Routes.postUserAccount_url);
       }
 
       @Order(1)
@@ -168,7 +150,7 @@ public class AccountCreateAndDeleteTest {
     class unSuccessfulCreateUserChecks {
       @BeforeAll
       void createUserFalse() {
-        AccountCreateAndDeleteTest.createUserWrongData();
+        response = CreateResponse.post("false", Routes.postUserAccount_url);
       }
 
       @Order(1)
