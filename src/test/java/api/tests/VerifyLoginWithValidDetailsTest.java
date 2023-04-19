@@ -1,5 +1,6 @@
 package api.tests;
 
+import api.CreateResponse;
 import api.endpoints.Routes;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
@@ -23,10 +24,8 @@ public class VerifyLoginWithValidDetailsTest {
     @ParameterizedTest(name = "{index} - Name: {0}")
     @CsvFileSource(files = "src/test/resources/VerifyUserAccount.csv", numLinesToSkip = 1)
     public void init(String email, String password) {
-        response = given()
-                .contentType("application/x-www-form-urlencoded")
-                .formParams("email", email, "password", password)
-                .post(Routes.postLoginDetails_url);
+        response = CreateResponse.post(Routes.postLoginDetails_url, "email", email, "password", password);
+
     }
 
     @Order(2)
@@ -50,6 +49,5 @@ public class VerifyLoginWithValidDetailsTest {
         assertThat(response.getStatusCode(), equalTo(200));
 
     }
-
 
 }

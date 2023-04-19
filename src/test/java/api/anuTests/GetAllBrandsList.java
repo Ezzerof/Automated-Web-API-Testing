@@ -24,6 +24,8 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import api.CreateResponse;
+
 public class GetAllBrandsList {
     private static final Logger logger = LogManager.getLogger(GetAllBrandsList.class);
     private static Response response;
@@ -37,7 +39,7 @@ public class GetAllBrandsList {
 
     @BeforeAll
     public static void init() {
-        response = get(getBrands_url);
+        response = CreateResponse.get(getBrands_url);
     }
 
     @Test
@@ -175,7 +177,7 @@ public class GetAllBrandsList {
         @DisplayName("Test the allow header")
         void testTheAllowHeader() {
 
-            response.then().spec(responseSpecification).and().assertThat().header("allow", "DELETE, OPTIONS, PUT, POST, GET");
+            response.then().spec(responseSpecification).and().assertThat().header("allow", "PUT, GET, OPTIONS, DELETE, POST");
 
         }
 

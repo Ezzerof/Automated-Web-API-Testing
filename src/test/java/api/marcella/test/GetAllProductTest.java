@@ -1,5 +1,6 @@
 package api.marcella.test;
 
+import api.CreateResponse;
 import api.endpoints.Routes;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
@@ -19,7 +20,7 @@ public class GetAllProductTest {
    public static  Response response;
     @BeforeAll
     public static void init() {
-        response = given().when().log().all().get(Routes.getProducts_url).then().extract().response();
+        response = CreateResponse.get(Routes.getProducts_url);
     }
 
         @Test

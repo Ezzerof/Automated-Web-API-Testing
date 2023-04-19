@@ -1,5 +1,6 @@
 package api.chrisTests;
 
+import api.CreateResponse;
 import api.JsonParser;
 import api.endpoints.Routes;
 import io.restassured.response.Response;
@@ -26,11 +27,8 @@ public class VerifyLoginWithValidDetailsTest {
         @DisplayName("Login with Valid Details")
         void testLoginWithValidDetails() {
             items = JsonParser.createMap("src\\test\\resources\\user.json");
-            response = given()
-                    .contentType("application/x-www-form-urlencoded")
-                    .formParams("email", items.get("email"), "password", items.get("password"))
-                    .post(Routes.postLoginDetails_url);
-            System.out.println(response.getBody().asString());
+            response = CreateResponse.post(items, "email", "password");
+
         }
 
         @Order(2)

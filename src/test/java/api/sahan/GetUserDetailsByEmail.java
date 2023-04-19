@@ -1,5 +1,6 @@
 package api.sahan;
 
+import api.CreateResponse;
 import api.endpoints.Routes;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -40,20 +41,9 @@ public class GetUserDetailsByEmail {
 
     @BeforeAll
     public static void init(){
-        response =
-                given()
-                        .when()
-                        .get(Routes.getUserAccountByEmail_url)
-                        .then().extract().response();
-        responseWithVariable =
-                given()
-                .when()
-                .get(Routes.getUserAccountByEmail_url+query)
-                        .then().extract().response();
-
-
+        response = CreateResponse.get(Routes.getUserAccountByEmail_url);
+        responseWithVariable = CreateResponse.get(Routes.getUserAccountByEmail_url, query);
         //url one gets a response code 200. the other does not
-
        // response = get("https://automationexercise.com/api/getUserDetailByEmail");
 
     }
