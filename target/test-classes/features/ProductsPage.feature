@@ -16,3 +16,8 @@ Feature: As a User, I want to be able to navigate to Products page
       And Enter "Dress" on search bar
       And Press on search button
       Then I will go to Dress page
+
+    Scenario: On the Product page press search button with empty search bar
+      Given I am on the Product page
+      When I press search button
+      Then I should send empty query

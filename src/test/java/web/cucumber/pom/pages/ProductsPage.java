@@ -3,7 +3,6 @@ package web.cucumber.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class ProductsPage {
 
@@ -30,12 +29,11 @@ public class ProductsPage {
         webDriver.findElement(searchBox).sendKeys(keyword);
     }
 
-    public void enterTextInSearchBar(String keyword) {
-        WebElement searchBar = webDriver.findElement(searchBox);
-        searchBar.sendKeys(keyword);
-    }
-
     public void clickByXpath(String xpath) {
         webDriver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void clickOnSearchButton() {
+        clickByXpath("//button[@id='submit_search']");
     }
 }

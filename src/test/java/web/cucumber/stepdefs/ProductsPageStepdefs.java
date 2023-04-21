@@ -18,7 +18,7 @@ import web.cucumber.util.AutomationWebsiteUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MyStepdefs {
+public class ProductsPageStepdefs {
 
     private static WebDriver webDriver;
     private static ChromeDriverService service;
@@ -83,6 +83,21 @@ public class MyStepdefs {
 
     @And("Press on search button")
     public void pressOnSearchButton() {
-        productsPage.clickByXpath("//button[@id='submit_search']");
+        productsPage.clickOnSearchButton();
+    }
+
+    @Given("I am on the Product page")
+    public void iAmOnTheProductPage() {
+        productsPage = homePage.goToProductsPage();
+    }
+
+    @When("I press search button")
+    public void iPressSearchButton() {
+        productsPage.clickOnSearchButton();
+    }
+
+    @Then("I should send empty query")
+    public void iShouldSendEmptyQuery() {
+        assertEquals(productsPage.getUrl(), "https://automationexercise.com/products?search=");
     }
 }
