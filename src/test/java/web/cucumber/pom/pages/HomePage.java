@@ -19,17 +19,17 @@ public class HomePage {
         webDriver.get("https://automationexercise.com/");
     }
 
-    private ProductsPage goToProductsPage() {
+    public ProductsPage goToProductsPage() {
         webDriver.findElement(productsPage).click();
         return new ProductsPage(webDriver);
     }
 
-    private CartPage goToCartPage() {
+    public CartPage goToCartPage() {
         webDriver.findElement(cartPage).click();
         return new CartPage(webDriver);
     }
 
-    private LoginPage goToLoginPage() {
+    public LoginPage goToLoginPage() {
         webDriver.findElement(loginPage).click();
         return new LoginPage(webDriver);
     }
