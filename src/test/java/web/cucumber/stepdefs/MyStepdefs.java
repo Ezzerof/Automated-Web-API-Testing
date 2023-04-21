@@ -2,6 +2,7 @@ package web.cucumber.stepdefs;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,5 +59,30 @@ public class MyStepdefs {
     @Then("I will go to the Products page")
     public void iWillGoToTheProductsPage() {
         assertEquals("https://automationexercise.com/products", productsPage.getUrl());
+    }
+
+    @And("I click on the search bar")
+    public void iClickOnTheSearchBar() {
+        productsPage.clickOnSearchBar();
+    }
+
+    @And("Enter {string} and press enter")
+    public void enterAndPressEnter(String arg0) {
+        productsPage.searchForAndPressEntre(arg0);
+    }
+
+    @Then("I will go to Dress page") // will not go as Enter button does not work!
+    public void iWillGoToDressPage() {
+        assertEquals("https://automationexercise.com/products?search=Dress", productsPage.getUrl());
+    }
+
+    @And("Enter {string} on search bar")
+    public void enterOnSearchBar(String arg0) {
+        productsPage.searchFor(arg0);
+    }
+
+    @And("Press on search button")
+    public void pressOnSearchButton() {
+        productsPage.clickByXpath("//button[@id='submit_search']");
     }
 }
