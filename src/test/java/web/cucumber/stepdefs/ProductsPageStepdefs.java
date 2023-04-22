@@ -10,11 +10,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import web.cucumber.pom.pages.CartPage;
 import web.cucumber.pom.pages.HomePage;
 import web.cucumber.pom.pages.LoginPage;
 import web.cucumber.pom.pages.ProductsPage;
 import web.cucumber.util.AutomationWebsiteUtil;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -35,6 +38,7 @@ public class ProductsPageStepdefs {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         webDriver = new ChromeDriver(service, chromeOptions);
+        webDriver.manage().window().maximize();
 
     }
 
@@ -58,7 +62,7 @@ public class ProductsPageStepdefs {
 
     @Then("I will go to the Products page")
     public void iWillGoToTheProductsPage() {
-        assertEquals("https://automationexercise.com/products", productsPage.getUrl());
+        assertEquals(productsPage.getTitle(), "Automation Exercise - All Products");
     }
 
     @And("I click on the search bar")

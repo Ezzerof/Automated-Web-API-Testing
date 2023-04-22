@@ -3,11 +3,16 @@ package web.cucumber.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ProductsPage {
 
     private WebDriver webDriver;
-    private By searchBox = new By.ByXPath("//input[@id='search_product']");
+    private final By searchBox = new By.ByXPath("//input[@id='search_product']");
+    private final By searchButton = new By.ByXPath("//button[@id='submit_search']");
 
     public ProductsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -17,7 +22,18 @@ public class ProductsPage {
         return webDriver.getCurrentUrl();
     }
 
+    public String getTitle() {
+        return webDriver.getTitle();
+    }
+
+    public void waitForClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    // Wait used to secure our operations on un synchronised pages
     public void clickOnSearchBar() {
+        waitForClickable(searchBox);
         webDriver.findElement(searchBox).click();
     }
 
@@ -33,7 +49,12 @@ public class ProductsPage {
         webDriver.findElement(By.xpath(xpath)).click();
     }
 
+    public void clickByXpath(By xpath) {
+        waitForClickable(xpath);
+        webDriver.findElement(xpath);
+    }
+
     public void clickOnSearchButton() {
-        clickByXpath("//button[@id='submit_search']");
+        clickByXpath(searchButton);
     }
 }
