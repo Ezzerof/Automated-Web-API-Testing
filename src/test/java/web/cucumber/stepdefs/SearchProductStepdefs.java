@@ -10,18 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import web.cucumber.pom.pages.CartPage;
 import web.cucumber.pom.pages.HomePage;
-import web.cucumber.pom.pages.LoginPage;
 import web.cucumber.pom.pages.ProductsPage;
 import web.cucumber.util.AutomationWebsiteUtil;
 
-import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ProductsPageStepdefs {
+public class SearchProductStepdefs {
 
     private static WebDriver webDriver;
     private static ChromeDriverService service;
@@ -29,8 +24,6 @@ public class ProductsPageStepdefs {
 
     private HomePage homePage;
     private ProductsPage productsPage;
-    private CartPage cartPage;
-    private LoginPage loginPage;
 
     @Before
     public void setup() {
@@ -39,7 +32,6 @@ public class ProductsPageStepdefs {
         chromeOptions.addArguments("--remote-allow-origins=*");
         webDriver = new ChromeDriver(service, chromeOptions);
         webDriver.manage().window().maximize();
-
     }
 
     @After
@@ -48,6 +40,7 @@ public class ProductsPageStepdefs {
         webDriver.quit();
         service.stop();
     }
+
 
     @Given("I am on the Home Page")
     public void iAmOnTheHomePage() {
