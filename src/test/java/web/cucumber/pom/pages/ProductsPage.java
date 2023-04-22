@@ -3,6 +3,8 @@ package web.cucumber.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,6 +15,9 @@ public class ProductsPage {
     private WebDriver webDriver;
     private final By searchBox = new By.ByXPath("//input[@id='search_product']");
     private final By searchButton = new By.ByXPath("//button[@id='submit_search']");
+    private final By addToCartButton = new By.ByXPath("//body/section/div[@class='container']/div[@class='row']/div[@class='col-sm-9 padding-right']/div[@class='features_items']/div[2]/div[1]/div[1]/div[1]/a[1]");
+    private final By viewProductButton = new By.ByCssSelector("a[href='/product_details/1']");
+    private final By continueShoppingButton = new By.ByXPath("//button[normalize-space()='Continue Shopping']");
 
     public ProductsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -51,10 +56,24 @@ public class ProductsPage {
 
     public void clickByXpath(By xpath) {
         waitForClickable(xpath);
-        webDriver.findElement(xpath);
+        webDriver.findElement(xpath).click();
     }
 
     public void clickOnSearchButton() {
         clickByXpath(searchButton);
     }
+
+    public void clickOnAddToCartOverlay(String xpathOfProduct) {
+        Actions actions = new Actions(webDriver);
+        WebElement add = webDriver.findElement(By.xpath(xpathOfProduct));
+        actions.moveToElement(add);
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a.add-to-cart")));
+        addToCartButton.click();
+    }
+
+    public void clickOnContinueShopping() {
+        webDriver.findElement(continueShoppingButton).click();
+    }
+
 }
