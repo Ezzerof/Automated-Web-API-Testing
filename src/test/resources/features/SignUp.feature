@@ -8,7 +8,19 @@ Feature: As a User, I want to be able to sign up so that I can use the website
 
 
   @jr
-  Scenario: Entering details on sign up page
-    Given I am on the sign up page
-    When I enter details
-    Then I should go to the account information page
+  Scenario: Entering details on login in page
+    Given I am on the login page
+    When I enter details to sign up
+    Then I should go to the sign up page
+
+  @jr
+  Scenario: Entering details on the sign up page
+    Given I have entered details to sign up on the login page and clicked signup
+    When I enter details on the sign up page and click create account
+    Then I should be taken to the account creation page
+
+  @jr
+  Scenario: Signing up and deleting account
+    Given I have signed up
+    When I click on delete account
+    Then my account should be delete
