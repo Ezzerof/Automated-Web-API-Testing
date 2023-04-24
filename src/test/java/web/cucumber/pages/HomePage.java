@@ -2,6 +2,7 @@ package web.cucumber.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage {
 
@@ -22,6 +23,13 @@ public class HomePage {
 
     public ProductsPage goToProductsPage() {
         webDriver.findElement(productsPage).click();
+        Actions actions = new Actions(webDriver);
+        actions.moveByOffset(0, 0).click().perform();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return new ProductsPage(webDriver);
     }
 
