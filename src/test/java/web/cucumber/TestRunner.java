@@ -7,7 +7,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src\\test\\resources\\features"},
-        plugin = {"pretty", "html:target/testReport.html", "json:target/jsonReport.json"}
+        //features = {"src\\test\\resources\\features\\SearchProduct.feature"},
+        //features = {"src\\test\\resources\\features\\AddProductToCart.feature"}, //APC
+        plugin = {"pretty", "html:target/testReport.html", "json:target/jsonReport.json", "rerun:target/rerun.txt"},
+        //dryRun = false,
+        monochrome = true
+        //tags = "@sanity" //APC
+        //tags = "@sb" // search bar
 )
 public class TestRunner {
 }
