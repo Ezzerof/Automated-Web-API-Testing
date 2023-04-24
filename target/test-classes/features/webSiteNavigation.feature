@@ -1,12 +1,13 @@
 Feature: As a User, I want to be able to navigate the automation exercise Website
+
   @wnf
   Background: Starting from the homepage
     Given I am on the automation exercise Website
   @wnf
   Scenario: Navigating to the products page from the Home page
-
     When I click on the products link
     Then I will go to the products Page
+
   @wnf
   Scenario:  Navigating to the cart page from the Home page
     When I click on the cart link

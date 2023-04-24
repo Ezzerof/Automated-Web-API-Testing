@@ -28,7 +28,9 @@ public class WebSiteNavigation {
     private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
 
 
+
     @Before("@webNav")
+
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
