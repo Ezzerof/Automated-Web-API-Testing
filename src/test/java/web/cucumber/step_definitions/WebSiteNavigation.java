@@ -29,7 +29,8 @@ public class WebSiteNavigation {
 
 
 
-    @Before("@ah")
+
+    @Before("@webNav")
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -125,8 +126,7 @@ public class WebSiteNavigation {
     }
 
 
-
-    @After("@ah")
+    @After("@webNav")
     public void tearDown(){
         driver.close();
         driver.quit();
