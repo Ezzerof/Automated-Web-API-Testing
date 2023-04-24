@@ -1,0 +1,35 @@
+Feature: As a User, I want to be able to navigate the automation exercise Website
+
+  Background: Starting from the homepage
+    Given I am on the automation exercise Website
+
+  Scenario: Navigating to the products page from the Home page
+
+    When I click on the products link
+    Then I will go to the products Page
+
+  Scenario:  Navigating to the cart page from the Home page
+    When I click on the cart link
+    Then I will go to the cart page
+
+
+  Scenario:  Navigating to the SignIn page from the Home page
+    When I click on the Signup/Login link
+    Then I will go to the sign In page
+
+  Scenario:  Navigating to the Test cases page from the Home page
+    When I click on the Test cases link
+    Then I will go to the Test cases page
+
+  Scenario:  Navigating to the API Testing page from the Home page
+    When I click on the API Testing link
+    Then I will go to the API Testing page
+
+  Scenario:  Navigating to the Video Tutorials page from the Home page
+    When I click on the video tutorials link
+    Then I will go to the Video Tutorials page
+
+  Scenario:  Navigating to the Contact Us page from the Home page
+    When I click on the contact us link
+    Then I will go to the contact us page
+
