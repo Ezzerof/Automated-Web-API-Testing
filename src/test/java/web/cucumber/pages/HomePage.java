@@ -63,5 +63,10 @@ public class HomePage {
         return new LoginPage(webDriver);
     }
 
+    public SignUpPage goToSignUpPage(){
+        webDriver.findElement(loginPage).click();
+        return new SignUpPage(webDriver);
+    }
+
 
 }

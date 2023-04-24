@@ -28,7 +28,7 @@ public class WebSiteNavigation {
     private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
 
 
-    @Before
+    @Before("@ag")
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -125,7 +125,7 @@ public class WebSiteNavigation {
 
 
 
-    @After
+    @After("@ag")
     public void tearDown(){
         driver.close();
         driver.quit();
