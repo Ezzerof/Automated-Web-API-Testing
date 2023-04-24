@@ -18,6 +18,8 @@ public class ProductsPage {
     private final By viewCartButton = new By.ByXPath("//u[normalize-space()='View Cart']");
     private final By continueShoppingButton = new By.ByXPath("//button[normalize-space()='Continue Shopping']");
 
+    private final By viewProductButton = new By.ByXPath("//button[@id='/product_details/1']");
+
     public ProductsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -62,6 +64,10 @@ public class ProductsPage {
         clickByXpath(searchButton);
     }
 
+    public void clickOnViewProduct(){
+        clickByXpath(viewProductButton);
+    }
+
     public void clickOnAddToCartOverlay(String xpathOfProduct, String xpathAddButton) {
         Actions actions = new Actions(webDriver);
         WebElement add = webDriver.findElement(By.xpath(xpathOfProduct));
@@ -89,5 +95,7 @@ public class ProductsPage {
         webDriver.findElement(viewCartButton).click();
         return new CartPage(webDriver);
     }
+
+
 
 }

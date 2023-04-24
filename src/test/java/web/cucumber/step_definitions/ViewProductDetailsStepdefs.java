@@ -1,68 +1,54 @@
 package web.cucumber.step_definitions;
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import web.cucumber.pages.CartPage;
 import web.cucumber.pages.HomePage;
 import web.cucumber.pages.ProductsPage;
-import web.cucumber.util.AutomationWebsiteUtil;
+
+import java.time.Duration;
 
 public class ViewProductDetailsStepdefs {
-
-    private static WebDriver webDriver;
-    private static ChromeDriverService service;
+    private static WebDriver driver;
     private HomePage homePage;
     private ProductsPage productsPage;
+    private CartPage cartPage;
 
-    private WebSiteNavigation webSiteNavigation;
-    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
-
+    private final By adWindow = new By.ById("//u[normalize-space()='View Cart']");
     @Before
-    public void setup() {
-        service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        //chromeOptions.addArguments("headless");
-        webDriver = new ChromeDriver(service, chromeOptions);
-        webDriver.manage().window().maximize();
-    }
-
-    @After
-    public void tearDown() {
-        webDriver.close();
-        webDriver.quit();
-        service.stop();
+    public void setup(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.manage().window().maximize();
 
     }
-
-    @Given("I am on the automation exercise website")
-    public void iAmOnTheAutomationExerciseWebsite() {
-        homePage = new HomePage(webDriver);
+    @Given("I am on the automation exercise homepage")
+    public void iAmOnTheAutomationExerciseHomepage() {
+        homePage = new HomePage(driver);
     }
 
-    @When("User clicks {string} of first product")
-    public void userClicksViewProductOfFirstProduct() {
+    @When("I click on the products page")
+    public void iClickOnTheProductsPage() {
         productsPage = homePage.goToProductsPage();
     }
 
-    @Then("User should be in the product detail page")
-    public void userShouldBeInTheProductDetailPage() {
 
+    @Then("I navigate to products page")
+    public void iNavigateToProductsPage() {
     }
 
-    @And("The following are visible : product name, category, price, availability, condition, brand")
-    public void theFollowingAreVisibleProductNameCategoryPriceAvailabilityConditionBrand() {
-    }
 }
