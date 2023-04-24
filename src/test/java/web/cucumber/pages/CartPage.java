@@ -1,4 +1,4 @@
-package web.cucumber.pom.pages;
+package web.cucumber.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

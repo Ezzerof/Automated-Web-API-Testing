@@ -1,4 +1,4 @@
-package web.cucumber.pom.pages;
+package web.cucumber.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +9,7 @@ public class HomePage {
     private final By productsPage = new By.ByXPath("//a[@href='/products']");
     private final By cartPage = new By.ByXPath("//body[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/a[1]");
     private final By loginPage = new By.ByXPath("//a[normalize-space()='Signup / Login']");
+    private final By testCasesPage = new By.ByXPath("//a[normalize-space()='Test Cases']");
 
     public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -28,7 +29,27 @@ public class HomePage {
         webDriver.findElement(cartPage).click();
         return new CartPage(webDriver);
     }
+    public TestCasesPage goToTestCasesPage(){
+        webDriver.findElement(testCasesPage).click();
+        return new TestCasesPage(webDriver);
+    }
+    public APITestingPage goToAPITestingPage(){
+        webDriver.findElement(By.xpath("//a[normalize-space()='API Testing']")).click();
+        return new APITestingPage(webDriver);
+    }
+    public VideoTutorialsPage goToVideoTutorialsPage(){
+        webDriver.findElement(By.xpath("//a[normalize-space()='Video Tutorials']")).click();
+        return new VideoTutorialsPage(webDriver);
+    }
+    public ContactUsPage goToContactUsPage(){
+        webDriver.findElement(By.xpath("//a[normalize-space()='Contact us']")).click();
+        return new ContactUsPage(webDriver);
+    }
 
+    public SignInPage goToSignInPage(){
+        webDriver.findElement(By.xpath("//a[normalize-space()='Signup / Login']")).click();
+        return new SignInPage(webDriver);
+    }
     public LoginPage goToLoginPage() {
         webDriver.findElement(loginPage).click();
         return new LoginPage(webDriver);

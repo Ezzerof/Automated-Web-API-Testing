@@ -15,9 +15,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import web.cucumber.pom.pages.CartPage;
-import web.cucumber.pom.pages.HomePage;
-import web.cucumber.pom.pages.ProductsPage;
+import web.cucumber.pages.CartPage;
+import web.cucumber.pages.HomePage;
+import web.cucumber.pages.ProductsPage;
 import web.cucumber.util.RowsCounter;
 
 import java.time.Duration;

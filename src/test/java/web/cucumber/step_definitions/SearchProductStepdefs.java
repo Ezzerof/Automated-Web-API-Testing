@@ -13,8 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import web.cucumber.pom.pages.HomePage;
-import web.cucumber.pom.pages.ProductsPage;
+import web.cucumber.pages.HomePage;
+import web.cucumber.pages.ProductsPage;
 import web.cucumber.util.AutomationWebsiteUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
