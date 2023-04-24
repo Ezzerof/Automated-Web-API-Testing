@@ -25,10 +25,11 @@ public class WebSiteNavigation {
     private VideoTutorialsPage videoTutorialsPage;
     private APITestingPage apiTestingPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
+    private static final String DRIVER_LOCATION="src/test/resources/chromedriver.exe";
 
 
-    @Before
+
+    @Before("@ah")
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -125,11 +126,14 @@ public class WebSiteNavigation {
 
 
 
-    @After
+    @After("@ah")
     public void tearDown(){
         driver.close();
         driver.quit();
     }
 
 
+//    @When("I click on the Signup\\/Login link")
+//    public void iClickOnTheSignupLoginLink() {
+//    }
 }
