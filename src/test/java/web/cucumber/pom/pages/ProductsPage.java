@@ -15,8 +15,7 @@ public class ProductsPage {
     private WebDriver webDriver;
     private final By searchBox = new By.ByXPath("//input[@id='search_product']");
     private final By searchButton = new By.ByXPath("//button[@id='submit_search']");
-    private final By addToCartButton = new By.ByXPath("//body/section/div[@class='container']/div[@class='row']/div[@class='col-sm-9 padding-right']/div[@class='features_items']/div[2]/div[1]/div[1]/div[1]/a[1]");
-    private final By viewProductButton = new By.ByCssSelector("a[href='/product_details/1']");
+    private final By viewCartButton = new By.ByXPath("//u[normalize-space()='View Cart']");
     private final By continueShoppingButton = new By.ByXPath("//button[normalize-space()='Continue Shopping']");
 
     public ProductsPage(WebDriver webDriver) {
@@ -50,11 +49,11 @@ public class ProductsPage {
         webDriver.findElement(searchBox).sendKeys(keyword);
     }
 
-    public void clickByXpath(String xpath) {
+    private void clickByXpath(String xpath) {
         webDriver.findElement(By.xpath(xpath)).click();
     }
 
-    public void clickByXpath(By xpath) {
+    private void clickByXpath(By xpath) {
         waitForClickable(xpath);
         webDriver.findElement(xpath).click();
     }
@@ -63,17 +62,32 @@ public class ProductsPage {
         clickByXpath(searchButton);
     }
 
-    public void clickOnAddToCartOverlay(String xpathOfProduct) {
+    public void clickOnAddToCartOverlay(String xpathOfProduct, String xpathAddButton) {
         Actions actions = new Actions(webDriver);
         WebElement add = webDriver.findElement(By.xpath(xpathOfProduct));
-        actions.moveToElement(add);
+        actions.moveToElement(add).perform();
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a.add-to-cart")));
+        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(xpathAddButton)));
         addToCartButton.click();
     }
 
+//    public void clickOnAddToCartOverlay2ndProduct(String xpathOfProduct) {
+//        Actions actions = new Actions(webDriver);
+//        WebElement add = webDriver.findElement(By.xpath(xpathOfProduct));
+//        actions.moveToElement(add).perform();
+//        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+//        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[3]//div[1]//div[1]//div[2]//div[1]//a[1]")));
+//        addToCartButton.click();
+//    }
+
     public void clickOnContinueShopping() {
         webDriver.findElement(continueShoppingButton).click();
+    }
+
+    public CartPage clickOnViewCartButton() {
+        waitForClickable(viewCartButton);
+        webDriver.findElement(viewCartButton).click();
+        return new CartPage(webDriver);
     }
 
 }

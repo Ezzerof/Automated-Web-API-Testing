@@ -1,11 +1,14 @@
-package web.cucumber.stepdefs;
+package web.cucumber.step_definitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -25,17 +28,22 @@ public class SearchProductStepdefs {
     private HomePage homePage;
     private ProductsPage productsPage;
 
-    @Before
+    @Before("@sb")
     public void setup() {
         service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         webDriver = new ChromeDriver(service, chromeOptions);
-        webDriver.manage().window().maximize();
+        //webDriver.manage().window().maximize();
     }
 
-    @After
-    public void tearDown() {
+    @After("@sb")
+    public void tearDown(Scenario scenario) {
+        System.out.println("Scenario status =======> " + scenario.getStatus());
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
         webDriver.close();
         webDriver.quit();
         service.stop();
@@ -46,7 +54,6 @@ public class SearchProductStepdefs {
     public void iAmOnTheHomePage() {
         homePage = new HomePage(webDriver);
     }
-
 
     @When("I click on the Products button")
     public void iClickOnTheProductsButton() {
@@ -81,11 +88,6 @@ public class SearchProductStepdefs {
     @And("Press on search button")
     public void pressOnSearchButton() {
         productsPage.clickOnSearchButton();
-    }
-
-    @Given("I am on the Product page")
-    public void iAmOnTheProductPage() {
-        productsPage = homePage.goToProductsPage();
     }
 
     @When("I press search button")

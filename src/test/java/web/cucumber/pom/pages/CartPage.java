@@ -15,7 +15,7 @@ public class CartPage {
         return webDriver.getCurrentUrl();
     }
 
-    public void clickByXpath(By xpath) {
+    private void clickByXpath(By xpath) {
         webDriver.findElement(xpath);
     }
 
@@ -23,7 +23,8 @@ public class CartPage {
         return webDriver.findElement(By.xpath(xpath)).getText();
     }
 
-    public void clickByXpath(String xpath) {
+    private void clickByXpath(String xpath) {
         webDriver.findElement(By.xpath(xpath)).click();
     }
+
 }
