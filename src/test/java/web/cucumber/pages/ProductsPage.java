@@ -89,4 +89,9 @@ public class ProductsPage {
         webDriver.findElement(viewCartButton).click();
         return new CartPage(webDriver);
     }
+
+    public ProductPage goToProductPage(){
+        webDriver.findElement(By.xpath("(//a[contains(text(),'View Product')])[3]")).click();
+        return new ProductPage(webDriver);
+    }
 }
