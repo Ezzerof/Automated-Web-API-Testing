@@ -1,5 +1,6 @@
 package web.cucumber.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SignUpPage {
@@ -14,7 +15,9 @@ public class SignUpPage {
     return webDriver.getCurrentUrl();
   }
 
-  public void gotToSignUpPage() {
-    webDriver.get("https://automationexercise.com/login");
+  public AccountCreationPage createAccount(){
+
+        webDriver.findElement(By.xpath("/html/body/section/div/div/div/div/form/button")).click();
+        return new AccountCreationPage(webDriver);
   }
 }

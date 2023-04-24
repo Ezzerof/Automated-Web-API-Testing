@@ -63,10 +63,16 @@ public class HomePage {
         return new LoginPage(webDriver);
     }
 
-    public SignUpPage goToSignUpPage(){
-        webDriver.findElement(loginPage).click();
-        return new SignUpPage(webDriver);
+    public AccountDeletionPage goToDeletionPage(){
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")).click();
+        return new AccountDeletionPage(webDriver);
     }
+
+    public String getUrl() {
+        return webDriver.getCurrentUrl();
+    }
+
+
 
 
 }
