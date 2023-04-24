@@ -28,7 +28,9 @@ public class WebSiteNavigation {
     private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
 
 
-    @Before("@ag")
+
+    @Before("@webNav")
+
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -123,9 +125,7 @@ public class WebSiteNavigation {
         Assertions.assertEquals("https://automationexercise.com/contact_us",contactUsPage.getUrl());
     }
 
-
-
-    @After("@ag")
+    @After("@webNav")
     public void tearDown(){
         driver.close();
         driver.quit();
