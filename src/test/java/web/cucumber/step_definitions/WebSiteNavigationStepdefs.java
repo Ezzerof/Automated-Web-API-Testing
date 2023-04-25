@@ -6,10 +6,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
 import web.cucumber.pages.*;
+import web.cucumber.util.AutomationWebsiteUtil;
 
 import java.time.Duration;
 
@@ -25,16 +31,18 @@ public class WebSiteNavigationStepdefs {
     private VideoTutorialsPage videoTutorialsPage;
     private APITestingPage apiTestingPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver.exe";
+    private static final String DRIVER_LOCATION="src\\test\\resources\\chromedriver.exe";
+    private static ChromeDriverService service;
 
 
 
 
     @Before("@webNav")
     public void setup(){
+        service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(service, options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         try {
             Thread.sleep(5000);
@@ -74,19 +82,32 @@ public class WebSiteNavigationStepdefs {
     }
 
 
-    @When("I click on the Signup\\/Login link")
-    public void iClickOnTheSignupLoginLink() {
+    @When("I click on the Signup and Login link")
+    public void iClickOnTheSignupAndLoginLink() {
         signInPage=homePage.goToSignInPage();
     }
 
-    @Then("I will go to the sign In page")
+    @Then("I will go to the sign in page")
     public void iWillGoToTheSignInPage() {
         Assertions.assertEquals("https://automationexercise.com/login",signInPage.getUrl());
     }
 
     @When("I click on the Test cases link")
     public void iClickOnTheTestCasesLink() {
-        testCasesPage=homePage.goToTestCasesPage();
+        try {
+            testCasesPage=homePage.goToTestCasesPage();
+            Thread.sleep(2000);
+            WebElement iframe = driver.findElement(By.cssSelector("iframe#aswift_9"));
+            driver.switchTo().frame(iframe);
+            Actions builder = new Actions(driver);
+            WebElement html = driver.findElement(By.tagName("body"));
+            builder.moveToElement(html, 10, 25).click().build().perform();
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Then("I will go to the Test cases page")
@@ -97,8 +118,20 @@ public class WebSiteNavigationStepdefs {
 
     @When("I click on the API Testing link")
     public void iClickOnTheAPITestingLink() {
+       try{
         apiTestingPage=homePage.goToAPITestingPage();
+        Thread.sleep(2000);
+        WebElement iframe = driver.findElement(By.cssSelector("iframe#aswift_9"));
+        driver.switchTo().frame(iframe);
+        Actions builder = new Actions(driver);
+        WebElement html = driver.findElement(By.tagName("body"));
+        builder.moveToElement(html, 0, 0).click().build().perform();
+        Thread.sleep(2000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
+
+}
 
     @Then("I will go to the API Testing page")
     public void iWillGoToTheAPITestingPage() {
@@ -128,7 +161,6 @@ public class WebSiteNavigationStepdefs {
 
     @After("@webNav")
     public void tearDown(){
-        driver.close();
         driver.quit();
     }
 

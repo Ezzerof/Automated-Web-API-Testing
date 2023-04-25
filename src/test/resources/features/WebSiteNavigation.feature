@@ -17,7 +17,7 @@ Feature: As a User, I want to be able to navigate the automation exercise Websit
 
   @webNav
   Scenario: Navigating to the SignIn page from the Home page
-    When I click on the Signup\/Login link
+    When I click on the Signup and Login link
     Then I will go to the sign in page
 
 
