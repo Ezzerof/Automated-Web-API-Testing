@@ -22,7 +22,7 @@ public class SubscriptionStepdefs {
     private HomePage homePage;
     private CartPage cartPage;
 
-    @Before
+    @Before("@ab")
     public void setup(){
         service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions options = new ChromeOptions();
