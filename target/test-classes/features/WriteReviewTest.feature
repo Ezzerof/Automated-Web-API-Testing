@@ -9,11 +9,19 @@ Feature: Write a review on a product
     And I submit
     Then I should see a message telling me review was submited
 
+<<<<<<< HEAD
   @writereview
     Scenario:
     When I don't enter an email
     And I submit
     Then I should get a message telling the email field is missing.
+=======
+#  @writereview
+#    Scenario:
+#    When I don't enter an email
+#    And I submit
+#    Then I should get a message telling the email field is missing.
+>>>>>>> 42a1bbdb182af915d614c0cc967e0ece36e9ac0f
 #
   @writereview
   Scenario:

@@ -39,7 +39,19 @@ public class CartPage {
         return output;
     }
 
+    public String getContentOfFooterElementH2(){
 
+        return webDriver.findElement(By.cssSelector(".single-widget h2{}")).getText();
+    }
+
+    public void enterEmailInFooter(String Email){
+
+        webDriver.findElement(By.cssSelector(".searchform input{}")).sendKeys(Email);
+    }
+
+    public void clickArrowSubmitButton(){
+        webDriver.findElement(By.cssSelector(".searchform button i{}")).click();
+    }
 
 
 }
