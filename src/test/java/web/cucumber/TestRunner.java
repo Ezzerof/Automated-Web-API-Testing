@@ -10,14 +10,16 @@ import org.junit.runner.RunWith;
         //features = {"src\\test\\resources\\features\\SearchProduct.feature"},
         //features = {"src\\test\\resources\\features\\AddProductToCart.feature"},APC
 //    features = {"src\\test\\resources\\features\\SignUp.feature"},
-        features = {"src\\test\\resources\\features\\DeleteItemFromCart.feature"},
+//        features = {"src\\test\\resources\\features\\DeleteItemFromCart.feature"},
+        features = {"src\\test\\resources\\features\\WriteReviewTest.feature"},
         plugin = {"pretty", "html:target/testReport.html", "json:target/jsonReport.json", "rerun:target/rerun.txt"},
         //dryRun = false,
         monochrome = true,
         //tags = "@sanity" //APC
         //tags = "@sb" // search bar
         //tags = "@jr"
-        tags = "@kh"
+//        tags = "@kh"
+        tags = "@writereview"
 
 )
 public class TestRunner {
