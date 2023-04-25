@@ -31,7 +31,7 @@ public class WebSiteNavigationStepdefs {
     private VideoTutorialsPage videoTutorialsPage;
     private APITestingPage apiTestingPage;
 
-    private static final String DRIVER_LOCATION="src\\test\\resources\\chromedriver.exe";
+    private static final String DRIVER_LOCATION="src\\test\\resources\\chromedriver";
     private static ChromeDriverService service;
 
 

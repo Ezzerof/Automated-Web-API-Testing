@@ -33,7 +33,7 @@ public class WriteReviewStepdefs {
 
     private ProductPage productPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver.exe";
+    private static final String DRIVER_LOCATION ="src/test/resources/chromedriver";
 
     @Before("@writereview")
     public void setup(){
