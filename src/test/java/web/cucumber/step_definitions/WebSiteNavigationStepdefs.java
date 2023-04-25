@@ -25,7 +25,8 @@ public class WebSiteNavigationStepdefs {
     private VideoTutorialsPage videoTutorialsPage;
     private APITestingPage apiTestingPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
+    private static final String DRIVER_LOCATION="src/test/resources/chromedriver.exe";
+
 
 
 
@@ -124,6 +125,7 @@ public class WebSiteNavigationStepdefs {
         Assertions.assertEquals("https://automationexercise.com/contact_us",contactUsPage.getUrl());
     }
 
+
     @After("@webNav")
     public void tearDown(){
         driver.close();
@@ -131,4 +133,7 @@ public class WebSiteNavigationStepdefs {
     }
 
 
+//    @When("I click on the Signup\\/Login link")
+//    public void iClickOnTheSignupLoginLink() {
+//    }
 }

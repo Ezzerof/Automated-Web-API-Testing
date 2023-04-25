@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+
     features = {"src\\test\\resources\\features"},
     //features = {"src\\test\\resources\\features\\SearchProduct.feature"},
     //features = {"src\\test\\resources\\features\\AddProductToCart.feature"}, //APC
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
     //tags = "@sanity" //APC
     //tags = "@sb" // search bar
     tags= "@jr or @sb or @sanity or @webNav"
+
 )
 public class TestRunner {
 }

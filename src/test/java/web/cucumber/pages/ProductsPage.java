@@ -89,5 +89,4 @@ public class ProductsPage {
         webDriver.findElement(viewCartButton).click();
         return new CartPage(webDriver);
     }
-
 }

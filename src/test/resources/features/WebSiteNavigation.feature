@@ -8,15 +8,18 @@ Feature: As a User, I want to be able to navigate the automation exercise Websit
     When I click on the products link
     Then I will go to the products Page
 
+
   @webNav
   Scenario: Navigating to the cart page from the Home page
     When I click on the cart link
     Then I will go to the cart page
 
+
   @webNav
   Scenario: Navigating to the SignIn page from the Home page
     When I click on the Signup\/Login link
     Then I will go to the sign in page
+
 
   @webNav
   Scenario: Navigating to the Test cases page from the Home page
