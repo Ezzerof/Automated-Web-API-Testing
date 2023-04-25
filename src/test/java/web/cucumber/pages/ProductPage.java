@@ -2,6 +2,7 @@ package web.cucumber.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ProductPage {
     private WebDriver webDriver;
@@ -36,8 +37,13 @@ public class ProductPage {
 
     public String checkAvailability(){
         String inStock = webDriver.findElement(By.xpath("/html/body/section/div/div/div[2]/div[2]/div[2]/div/p[2]/span/b")).getText();
-
         return inStock;
+    }
+
+    public Boolean invalidInputMessage(){
+         WebElement invalidInput = webDriver.findElement(By.cssSelector("input:invalid"));
+        return invalidInput != null;
+
     }
 
 }

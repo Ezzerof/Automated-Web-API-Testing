@@ -11,6 +11,8 @@ public class HomePage {
     private final By cartPage = new By.ByXPath("//body[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/a[1]");
     private final By loginPage = new By.ByXPath("//a[normalize-space()='Signup / Login']");
     private final By testCasesPage = new By.ByXPath("//a[normalize-space()='Test Cases']");
+    private final By contactUsPage = new By.ByXPath("//a[normalize-space()='Contact us']");
+
 
     public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -74,16 +76,16 @@ public class HomePage {
 
     public String getContentOfFooterElementH2(){
 
-        return webDriver.findElement(By.cssSelector(".single-widget h2{}")).getText();
+        return webDriver.findElement(By.cssSelector(".single-widget h2")).getText();
     }
 
     public void enterEmailInFooter(String Email){
 
-        webDriver.findElement(By.cssSelector(".searchform input{}")).sendKeys(Email);
+        webDriver.findElement(By.cssSelector(".searchform input")).sendKeys(Email);
     }
 
     public void clickArrowSubmitButton(){
-        webDriver.findElement(By.cssSelector(".searchform button i{}")).click();
+        webDriver.findElement(By.cssSelector(".searchform button i")).click();
     }
 
 

@@ -30,7 +30,7 @@ public class VerifyCheckoutAddressStepdefs {
     private ProductsPage productsPage;
     private CartPage cartPage;
     private LoginPage loginPage;
-    private static final String DRIVER_LOCATION="src\\test\\resources\\chromedriver.exe";
+    private static final String DRIVER_LOCATION="src\\test\\resources\\chromedriver";
 
     public void fillInSignupDetails(){
         webDriver.findElement(By.cssSelector(".signup-form input[name='name']")).sendKeys("Test");
