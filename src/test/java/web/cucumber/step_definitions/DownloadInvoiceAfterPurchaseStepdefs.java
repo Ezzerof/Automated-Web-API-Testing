@@ -1,5 +1,7 @@
 package web.cucumber.step_definitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -74,7 +76,7 @@ public class DownloadInvoiceAfterPurchaseStepdefs {
         return false;
     }
 
-    @BeforeAll
+    @Before("@di")
     public static void setup() {
         service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -200,7 +202,7 @@ public class DownloadInvoiceAfterPurchaseStepdefs {
         String messageTitle = webDriver.findElement(By.tagName("h2")).getText();
         Assertions.assertTrue(messageTitle.contains("ACCOUNT DELETED!"));
     }
-    @AfterAll
+    @After("@di")
     public static void afterAll() {
         webDriver.close();
         webDriver.quit();

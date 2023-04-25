@@ -1,5 +1,7 @@
 package web.cucumber.step_definitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -53,7 +55,7 @@ public class VerifyCheckoutAddressStepdefs {
         webDriver.findElement(By.id("mobile_number")).sendKeys("0123456789");
     }
 
-    @BeforeAll
+    @Before("@va")
     public static void setup() {
         service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -154,7 +156,7 @@ public class VerifyCheckoutAddressStepdefs {
         String messageTitle = webDriver.findElement(By.tagName("h2")).getText();
         Assertions.assertTrue(messageTitle.contains("ACCOUNT DELETED!"));
     }
-    @AfterAll
+    @After("@va")
     public static void afterAll() {
         webDriver.close();
         webDriver.quit();
