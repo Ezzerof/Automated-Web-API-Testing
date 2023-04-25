@@ -1,5 +1,1 @@
-file:src/test/resources/features/VerifyCheckoutAddress.feature:5:11:15:20:25
-file:src/test/resources/features/DownloadInvoiceAfterPurchase.feature:5:11:15:21:28:32
-file:src/test/resources/features/WebSiteNavigation.feature:35
-file:src/test/resources/features/SearchProduct.feature:3
-file:src/test/resources/features/WriteReviewTest.feature:7
+file:src/test/resources/features/WriteReviewTest.feature:7:13:19:25

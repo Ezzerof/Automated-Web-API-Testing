@@ -1,5 +1,6 @@
 package web.cucumber.step_definitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -22,7 +23,7 @@ public class SubscriptionStepdefs {
     private HomePage homePage;
     private CartPage cartPage;
 
-    @Before
+    @Before("@ab")
     public void setup(){
         service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions options = new ChromeOptions();
@@ -32,6 +33,12 @@ public class SubscriptionStepdefs {
 
         homePage = new HomePage(webDriver);
         cartPage = homePage.goToCartPage();
+    }
+
+    @After("@ab")
+    public void close(){
+        webDriver.close();
+        webDriver.quit();
     }
 
     @And("I scroll down to the footer")
