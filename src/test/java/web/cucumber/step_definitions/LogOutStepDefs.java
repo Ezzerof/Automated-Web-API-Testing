@@ -20,9 +20,7 @@ public class LogOutStepDefs {
     private static SignInPage signInPage;
     private WebDriver webDriver;
 
-
-
-    @Before("@mc")
+    @Before
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -80,7 +78,7 @@ public class LogOutStepDefs {
         Assertions.assertEquals("https://automationexercise.com/login", signInPage.getUrl());
     }
 
-    @After("@mc")
+    @After
     public void tearDown() {
         webDriver.quit();
         webDriver.close();
