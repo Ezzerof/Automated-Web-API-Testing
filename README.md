@@ -9,12 +9,14 @@
 ## Installation
 
  1. Clone the repository from GitHub:
-   git clone https://github.com/Ezzerof/Automated-Web-API-Testing.git
+   `git clone https://github.com/Ezzerof/Automated-Web-API-Testing.git`
  2. Import the project into your Java IDE.
 
  3. Install the necessary dependencies using a build tool such as Maven or Gradle.
+ 
+ 4. Fill the .csv and .json files from test/resources
 
-4.Run the Automated-Web-API-Testing.java.test package to start the application.
+ 5. Run the api package to start the API testing application, or web/TestRunner.java to run Web testing application.
 
 # Project Roles:
 
