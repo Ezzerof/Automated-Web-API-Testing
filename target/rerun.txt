@@ -1,1 +1,3 @@
+file:src/test/resources/features/SignUp.feature:16
+file:src/test/resources/features/WebSiteNavigation.feature:17:22:27:32
 file:src/test/resources/features/SearchProduct.feature:3

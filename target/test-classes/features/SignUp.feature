@@ -6,7 +6,6 @@ Feature: As a User, I want to be able to sign up so that I can use the website
     When I click on the Signup link
     Then I should go to the Signup page
 
-
   @jr
   Scenario: Entering details on login in page
     Given I am on the login page

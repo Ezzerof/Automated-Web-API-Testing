@@ -13,7 +13,7 @@ import web.cucumber.pages.*;
 
 import java.time.Duration;
 
-public class WebSiteNavigation {
+public class WebSiteNavigationStepdefs {
 
     private static WebDriver driver;
     private HomePage homePage;
@@ -30,7 +30,6 @@ public class WebSiteNavigation {
 
 
     @Before("@webNav")
-
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
