@@ -3,22 +3,27 @@ package web.cucumber.step_definitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import web.cucumber.pages.CartPage;
 import web.cucumber.pages.HomePage;
 import web.cucumber.pages.ProductPage;
 import web.cucumber.pages.ProductsPage;
+import web.cucumber.util.AutomationWebsiteUtil;
 
 import java.time.Duration;
 
-public class ViewProductDetailsStepdefs {
+public class VerifyNumberOfProductsInCart {
     private static WebDriver driver;
     private HomePage homePage;
     private ProductsPage productsPage;
@@ -26,7 +31,7 @@ public class ViewProductDetailsStepdefs {
     private CartPage cartPage;
 
     private final By adWindow = new By.ById("//u[normalize-space()='View Cart']");
-    @Before("@prod_details")
+    @Before("@cart_quantity")
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -41,7 +46,7 @@ public class ViewProductDetailsStepdefs {
 
     }
 
-    @After("@prod_details")
+    @After("@cart_quantity")
     public void tearDown(Scenario scenario) {
         System.out.println("Scenario status =======> " + scenario.getStatus());
         if (scenario.isFailed()) {
@@ -50,41 +55,28 @@ public class ViewProductDetailsStepdefs {
         }
         driver.quit();
     }
-    @Given("I am on the automation exercise homepage")
-    public void iAmOnTheAutomationExerciseHomepage() {
+
+
+    @Given("I start on the homepage")
+    public void iStartOnTheHomepage() {
         homePage = new HomePage(driver);
     }
 
-    @When("I click on the products page")
-    public void iClickOnTheProductsPage() {
-        productsPage = homePage.goToProductsPage();
+    @When("I navigate to the cart")
+    public void iNavigateToTheCart() {
+        cartPage = homePage.goToCartPage();
     }
 
-
-    @Then("I navigate to products page")
-    public void iNavigateToProductsPage() {
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("window.scrollTo(0, 600)");
-        productPage = productsPage.goToProductPage();
-   //     productsPage.clickOnViewProduct();
-       /* try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        */
-     //     Assertions.assertEquals("https://automationexercise.com/product_details/3", productsPage.getUrl());
-
-        String expectedElementText = productPage.checkAvailability();
-        String actualElementText = "St";
-        //issue with HTML
-        Assert.assertEquals(actualElementText, expectedElementText);
-//using getText method the retrieve the text of the element
-
+    @And("I have an empty cart")
+    public void iHaveAnEmptyCart() {
 
     }
 
+    @Then("I should have {int} products in the cart")
+    public void iShouldHaveProductsInTheCart(int arg0) {
+        String emptyCart = cartPage.emptyCartMessage();
+        Assertions.assertEquals("Cart is empty!", emptyCart);
+    }
 
 
 }
