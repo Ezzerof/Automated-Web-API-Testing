@@ -72,7 +72,17 @@ public class HomePage {
         return webDriver.getCurrentUrl();
     }
 
+    public String getContentOfFooterElementH2(){
+        return  null;
+    }
 
+    public void enterEmailInFooter(String Email){
+
+    }
+
+    public void submitEmailArrow(){
+
+    }
 
 
 }
