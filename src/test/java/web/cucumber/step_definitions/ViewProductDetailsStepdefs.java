@@ -1,16 +1,18 @@
 package web.cucumber.step_definitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import web.cucumber.pages.CartPage;
 import web.cucumber.pages.HomePage;
+import web.cucumber.pages.ProductPage;
 import web.cucumber.pages.ProductsPage;
 
 import java.time.Duration;
@@ -19,6 +21,7 @@ public class ViewProductDetailsStepdefs {
     private static WebDriver driver;
     private HomePage homePage;
     private ProductsPage productsPage;
+    private ProductPage productPage;
     private CartPage cartPage;
 
     private final By adWindow = new By.ById("//u[normalize-space()='View Cart']");
@@ -36,6 +39,16 @@ public class ViewProductDetailsStepdefs {
         driver.manage().window().maximize();
 
     }
+
+    @After
+    public void tearDown(Scenario scenario) {
+        System.out.println("Scenario status =======> " + scenario.getStatus());
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+        driver.quit();
+    }
     @Given("I am on the automation exercise homepage")
     public void iAmOnTheAutomationExerciseHomepage() {
         homePage = new HomePage(driver);
@@ -49,6 +62,18 @@ public class ViewProductDetailsStepdefs {
 
     @Then("I navigate to products page")
     public void iNavigateToProductsPage() {
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollTo(0, 600)");
+        productPage = productsPage.goToProductPage();
+   //     productsPage.clickOnViewProduct();
+       /* try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        */
+          Assertions.assertEquals("https://automationexercise.com/product_details/3", productsPage.getUrl());
     }
 
 }
