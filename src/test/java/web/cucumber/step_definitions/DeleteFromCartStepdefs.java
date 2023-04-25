@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import web.cucumber.pages.CartPage;
 import web.cucumber.pages.HomePage;
@@ -30,14 +31,15 @@ public class DeleteFromCartStepdefs {
     private CartPage cartPage;
     private ProductsPage productsPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
+    private static ChromeDriverService service;
+    private static final String DRIVER_LOCATION = "src\\test\\resources\\chromedriver.exe";
 
     @Before("@kh")
     public void setup(){
-        AutomationWebsiteUtil.setDriverLocation(DRIVER_LOCATION);
+        service = AutomationWebsiteUtil.getChromeDriverService(DRIVER_LOCATION);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        webDriver = new ChromeDriver(options);
+        webDriver = new ChromeDriver(service, options);
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
