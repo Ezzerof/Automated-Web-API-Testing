@@ -100,7 +100,4 @@ public class ProductsPage {
         webDriver.findElement(By.xpath("(//a[contains(text(),'View Product')])[3]")).click();
         return new ProductPage(webDriver);
     }
-
-
-
 }
