@@ -25,5 +25,9 @@ hs_err_pid*
 #.xml text file
 *.xml
 *.index
+chromedriver
+chromedriver.exe
 
-
+/src/test/resources/path.properties
+/src/test/resources/chromedriver.exe
+src/test/resources/chromedriver
