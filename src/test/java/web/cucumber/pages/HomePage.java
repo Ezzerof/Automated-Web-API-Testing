@@ -38,11 +38,11 @@ public class HomePage {
         return new CartPage(webDriver);
     }
     public TestCasesPage goToTestCasesPage(){
-        webDriver.findElement(testCasesPage).click();
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")).click();
         return new TestCasesPage(webDriver);
     }
     public APITestingPage goToAPITestingPage(){
-        webDriver.findElement(By.xpath("//a[normalize-space()='API Testing']")).click();
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[6]/a")).click();
         return new APITestingPage(webDriver);
     }
     public VideoTutorialsPage goToVideoTutorialsPage(){
