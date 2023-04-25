@@ -74,16 +74,16 @@ public class HomePage {
 
     public String getContentOfFooterElementH2(){
 
-        return webDriver.findElement(By.cssSelector(".single-widget h2{}")).getText();
+        return webDriver.findElement(By.cssSelector(".single-widget h2")).getText();
     }
 
     public void enterEmailInFooter(String Email){
 
-        webDriver.findElement(By.cssSelector(".searchform input{}")).sendKeys(Email);
+        webDriver.findElement(By.cssSelector(".searchform input")).sendKeys(Email);
     }
 
     public void clickArrowSubmitButton(){
-        webDriver.findElement(By.cssSelector(".searchform button i{}")).click();
+        webDriver.findElement(By.cssSelector(".searchform button i")).click();
     }
 
 
