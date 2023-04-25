@@ -3,6 +3,7 @@ package web.cucumber.step_definitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +19,7 @@ public class SubscriptionStepdefs {
 
     private static WebDriver webDriver;
     private static ChromeDriverService service;
-    private static final String DRIVER_LOCATION = "src\\test\\resources\\chromedriver.exe";
+    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
 
     private HomePage homePage;
     private CartPage cartPage;
@@ -31,8 +32,6 @@ public class SubscriptionStepdefs {
         webDriver = new ChromeDriver(service, options);
         webDriver.manage().window().maximize();
 
-        homePage = new HomePage(webDriver);
-        cartPage = homePage.goToCartPage();
     }
 
     @After("@ab")
@@ -41,10 +40,13 @@ public class SubscriptionStepdefs {
         webDriver.quit();
     }
 
+    @Given("I click on the home page")
+    public void iClickOnTheHomePage() {
+        homePage = new HomePage(webDriver);
+    }
     @And("I scroll down to the footer")
     public void iScrollDownToTheFooter() {
         homePage.getContentOfFooterElementH2();
-        cartPage.getContentOfFooterElementH2();
     }
 
     @And("I can see the {string} message")
@@ -65,6 +67,11 @@ public class SubscriptionStepdefs {
 
     @Then("I should see a success popup message")
     public void iShouldSeeASuccessPopupMessage() {
+    }
+
+    @Given("I click on the cart page")
+    public void iClickOnTheCartPage() {
+        cartPage = homePage.goToCartPage();
     }
 
     @And("I scroll down to the footer on CartPage")
@@ -91,4 +98,7 @@ public class SubscriptionStepdefs {
     @Then("I should see a success popup message on CartPage")
     public void iShouldSeeASuccessPopupMessageOnCartPage() {
     }
+
+
+
 }
