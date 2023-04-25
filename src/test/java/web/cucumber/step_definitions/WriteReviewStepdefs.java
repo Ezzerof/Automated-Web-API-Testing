@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +19,10 @@ import web.cucumber.pages.ProductsPage;
 import web.cucumber.util.AutomationWebsiteUtil;
 
 import java.time.Duration;
+import java.util.function.BooleanSupplier;
+
+import static net.bytebuddy.matcher.ElementMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class WriteReviewStepdefs {
 
@@ -77,10 +82,17 @@ public class WriteReviewStepdefs {
 
     @When("I don't enter an email")
     public void iDonTEnterAnEmail() {
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 700)");
+        productPage.enterName("Jeff Winger");
+//        productPage.enterEmail("JWinger@Greendale.com");
+        productPage.enterReview("I used to be a lawyer!");
     }
 
     @Then("I should get a message telling the email field is missing.")
     public void iShouldGetAMessageTellingTheEmailFieldIsMissing() {
+        // Assertions.assertEquals("Please fill in this field.", productPage.invalidInputMessage());
+    Assertions.assertTrue(productPage.invalidInputMessage());
     }
 
     @When("I don't enter an name")
