@@ -1,5 +1,9 @@
 Feature: As a User, I want to be able to navigate the automation exercise Website
 
+  Background: Starting from the homepage
+    Given I am on the automation exercise Website
+
+
   @webNav
   Background: Starting from the homepage
     Given I am on the automation exercise Website
@@ -9,14 +13,16 @@ Feature: As a User, I want to be able to navigate the automation exercise Websit
     When I click on the products link
     Then I will go to the products Page
 
+
   @webNav
   Scenario:  Navigating to the cart page from the Home page
     When I click on the cart link
     Then I will go to the cart page
 
+
   @webNav
   Scenario:  Navigating to the SignIn page from the Home page
-    When I click on the Signup/Login link
+#    When I click on the Signup/Login link
     Then I will go to the sign In page
 
   @webNav

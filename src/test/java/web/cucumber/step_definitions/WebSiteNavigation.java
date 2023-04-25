@@ -25,12 +25,12 @@ public class WebSiteNavigation {
     private VideoTutorialsPage videoTutorialsPage;
     private APITestingPage apiTestingPage;
 
-    private static final String DRIVER_LOCATION="src/test/resources/chromedriver";
+    private static final String DRIVER_LOCATION="src/test/resources/chromedriver.exe";
+
 
 
 
     @Before("@webNav")
-
     public void setup(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -125,6 +125,7 @@ public class WebSiteNavigation {
         Assertions.assertEquals("https://automationexercise.com/contact_us",contactUsPage.getUrl());
     }
 
+
     @After("@webNav")
     public void tearDown(){
         driver.close();
@@ -132,4 +133,7 @@ public class WebSiteNavigation {
     }
 
 
+//    @When("I click on the Signup\\/Login link")
+//    public void iClickOnTheSignupLoginLink() {
+//    }
 }
