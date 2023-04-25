@@ -27,3 +27,6 @@ hs_err_pid*
 *.index
 
 
+/src/test/resources/path.properties
+/src/test/resources/chromedriver.exe
+src/test/resources/chromedriver
