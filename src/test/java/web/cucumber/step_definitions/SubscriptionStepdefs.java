@@ -4,12 +4,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.zh_tw.並且;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import web.cucumber.pages.CartPage;
 import web.cucumber.pages.HomePage;
 import web.cucumber.util.AutomationWebsiteUtil;
 
@@ -20,6 +20,7 @@ public class SubscriptionStepdefs {
     private static final String DRIVER_LOCATION = "src\\test\\resources\\chromedriver.exe";
 
     private HomePage homePage;
+    private CartPage cartPage;
 
     @Before
     public void setup(){
@@ -30,11 +31,13 @@ public class SubscriptionStepdefs {
         webDriver.manage().window().maximize();
 
         homePage = new HomePage(webDriver);
+        cartPage = homePage.goToCartPage();
     }
 
     @And("I scroll down to the footer")
     public void iScrollDownToTheFooter() {
         homePage.getContentOfFooterElementH2();
+        cartPage.getContentOfFooterElementH2();
     }
 
     @And("I can see the {string} message")
@@ -55,5 +58,30 @@ public class SubscriptionStepdefs {
 
     @Then("I should see a success popup message")
     public void iShouldSeeASuccessPopupMessage() {
+    }
+
+    @And("I scroll down to the footer on CartPage")
+    public void iScrollDownToTheFooterOnCartPage() {
+        cartPage.getContentOfFooterElementH2();
+    }
+
+    @And("I can see the {string} message on CartPage")
+    public void iCanSeeTheSUBSCRIPTIONMessageOnCartPage() {
+        String message = cartPage.getContentOfFooterElementH2();
+        Assertions.assertEquals("SUBSCRIPTION",message);
+    }
+
+    @When("I input my email details in the input box on CartPage")
+    public void iInputMyEmailDetailsInTheInputBoxOnCartPage() {
+        cartPage.enterEmailInFooter("test123@gmail.com");
+    }
+
+    @And("click the arrow button on CartPage")
+    public void clickTheArrowButtonOnCartPage() {
+        cartPage.clickArrowSubmitButton();
+    }
+
+    @Then("I should see a success popup message on CartPage")
+    public void iShouldSeeASuccessPopupMessageOnCartPage() {
     }
 }
