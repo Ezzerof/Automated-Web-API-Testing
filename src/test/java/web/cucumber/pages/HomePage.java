@@ -40,11 +40,11 @@ public class HomePage {
         return new CartPage(webDriver);
     }
     public TestCasesPage goToTestCasesPage(){
-        webDriver.findElement(testCasesPage).click();
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")).click();
         return new TestCasesPage(webDriver);
     }
     public APITestingPage goToAPITestingPage(){
-        webDriver.findElement(By.xpath("//a[normalize-space()='API Testing']")).click();
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[6]/a")).click();
         return new APITestingPage(webDriver);
     }
     public VideoTutorialsPage goToVideoTutorialsPage(){
@@ -63,6 +63,29 @@ public class HomePage {
     public LoginPage goToLoginPage() {
         webDriver.findElement(loginPage).click();
         return new LoginPage(webDriver);
+    }
+
+    public AccountDeletionPage goToDeletionPage(){
+        webDriver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")).click();
+        return new AccountDeletionPage(webDriver);
+    }
+
+    public String getUrl() {
+        return webDriver.getCurrentUrl();
+    }
+
+    public String getContentOfFooterElementH2(){
+
+        return webDriver.findElement(By.cssSelector(".single-widget h2{}")).getText();
+    }
+
+    public void enterEmailInFooter(String Email){
+
+        webDriver.findElement(By.cssSelector(".searchform input{}")).sendKeys(Email);
+    }
+
+    public void clickArrowSubmitButton(){
+        webDriver.findElement(By.cssSelector(".searchform button i{}")).click();
     }
 
 

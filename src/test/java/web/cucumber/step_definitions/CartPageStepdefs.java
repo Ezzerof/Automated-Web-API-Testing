@@ -81,7 +81,7 @@ public class CartPageStepdefs {
     @When("click on Add to cart on a product")
     public void click_on_add_to_cart_on_a_product() {
         productsPage.clickOnAddToCartOverlay("//body[1]/section[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/h2[1]", "a.add-to-cart");
-        logger.info("Added product to the cart");
+       logger.info("Added product to the cart");
     }
 
     @When("press continue to checkout")
@@ -103,7 +103,8 @@ public class CartPageStepdefs {
 
     @When("User click on Add to cart another product")
     public void userClickOnAddToCartAnotherProduct() {
-        productsPage.clickOnAddToCartOverlay("//div[@class='productinfo text-center']//p[contains(text(),'Men Tshirt')]", "body > section:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(3)");
+        productsPage.clickOnAddToCartOverlay("//div[@class='productinfo text-center']//p[contains(text(),'Men Tshirt')]",
+                "body > section:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(3)");
         logger.info("Added another product to the cart");
     }
 

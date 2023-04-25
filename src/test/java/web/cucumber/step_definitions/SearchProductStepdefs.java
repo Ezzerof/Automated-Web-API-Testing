@@ -23,7 +23,7 @@ public class SearchProductStepdefs {
 
     private static WebDriver webDriver;
     private static ChromeDriverService service;
-    private static final String DRIVER_LOCATION = "src\\test\\resources\\chromedriver.exe";
+    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver";
 
     private HomePage homePage;
     private ProductsPage productsPage;

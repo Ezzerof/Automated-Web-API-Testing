@@ -15,10 +15,13 @@ public class LoginPage {
         return webDriver.getCurrentUrl();
     }
 
-//    public void enterUserDetailsAndLogin(String email, String password) {
-//        webDriver.findElement(By.xpath("//input[@data-qa='login-email']")).sendKeys("Example@123");
-//        webDriver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("Example@123");
-//        webDriver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-//    }
+    public void goToLoginPage() {
+        webDriver.get("https://automationexercise.com/login");
+    }
+
+    public SignUpPage goToSignUpPage(){
+        webDriver.findElement(By.xpath("//button[contains(text(), 'Signup')]")).click();
+        return new SignUpPage(webDriver);
+    }
 
 }
