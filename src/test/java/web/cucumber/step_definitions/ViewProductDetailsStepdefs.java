@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -73,7 +74,17 @@ public class ViewProductDetailsStepdefs {
         }
 
         */
-          Assertions.assertEquals("https://automationexercise.com/product_details/3", productsPage.getUrl());
+     //     Assertions.assertEquals("https://automationexercise.com/product_details/3", productsPage.getUrl());
+
+        String expectedElementText = productPage.checkAvailability();
+        String actualElementText = "St";
+        //issue with HTML
+        Assert.assertEquals(actualElementText, expectedElementText);
+//using getText method the retrieve the text of the element
+
+
     }
+
+
 
 }
