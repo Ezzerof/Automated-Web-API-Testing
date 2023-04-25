@@ -85,7 +85,6 @@ public class WriteReviewStepdefs {
         JavascriptExecutor jse = (JavascriptExecutor)webDriver;
         jse.executeScript("window.scrollTo(0, 700)");
         productPage.enterName("Jeff Winger");
-//        productPage.enterEmail("JWinger@Greendale.com");
         productPage.enterReview("I used to be a lawyer!");
     }
 
@@ -97,18 +96,28 @@ public class WriteReviewStepdefs {
 
     @When("I don't enter an name")
     public void iDonTEnterAnName() {
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 700)");
+        productPage.enterEmail("JWinger@Greendale.com");
+        productPage.enterReview("I used to be a lawyer!");
     }
 
     @Then("I should get a message telling the name field is missing.")
     public void iShouldGetAMessageTellingTheNameFieldIsMissing() {
+        Assertions.assertTrue(productPage.invalidInputMessage());
     }
 
     @When("I don't enter an review")
     public void iDonTEnterAnReview() {
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 700)");
+        productPage.enterName("Jeff Winger");
+        productPage.enterEmail("JWinger@Greendale.com");
     }
 
     @Then("I should get a message telling the review field is missing.")
     public void iShouldGetAMessageTellingTheReviewFieldIsMissing() {
+        Assertions.assertTrue(productPage.invalidInputMessage());
     }
 
 }

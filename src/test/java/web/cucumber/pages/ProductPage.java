@@ -36,9 +36,7 @@ public class ProductPage {
     }
 
     public Boolean invalidInputMessage(){
-        // String message = webDriver.findElement(By.xpath("//script[@type='text/javascript'][1]")).getText();
          WebElement invalidInput = webDriver.findElement(By.cssSelector("input:invalid"));
-//        webDriver.findElement(By.className("alert"));
         return invalidInput != null;
     }
 
