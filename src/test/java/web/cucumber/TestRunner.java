@@ -15,7 +15,8 @@ import org.junit.runner.RunWith;
     monochrome = true,
     //tags = "@sanity" //APC
     //tags = "@sb" // search bar
-    tags = "@jr"
+    //tags = "@jr"
+        tags="@Ag"
 )
 public class TestRunner {
 }

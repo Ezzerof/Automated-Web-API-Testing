@@ -1,9 +1,6 @@
 package web.cucumber.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +14,8 @@ public class ProductsPage {
     private final By searchButton = new By.ByXPath("//button[@id='submit_search']");
     private final By viewCartButton = new By.ByXPath("//u[normalize-space()='View Cart']");
     private final By continueShoppingButton = new By.ByXPath("//button[normalize-space()='Continue Shopping']");
-
+    private final By popUpWindow = new By.ByXPath("//div[@class='modal-content']");
+private final By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding-right']//div[2]//div[1]//div[1]//div[2]//div[1]//a[1]");
     public ProductsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -90,4 +88,30 @@ public class ProductsPage {
         return new CartPage(webDriver);
     }
 
+    public void clickOnAddToCart() {
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 600)");
+
+
+         waitForElementTobeVisible(addToCartButton);
+       // webDriver.findElement(By.xpath("//div[@class='col-sm-9 padding-right']//div[2]//div[1]//div[1]//div[2]//div[1]//a[1]")).click();
+    webDriver.findElement(By.xpath("(//a[contains(text(),'Add to cart')])[1]")).click();
+    }
+
+
+     public void waitForElementTobeVisible(By locator){
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
+    }
+
+    public String getPoppedUpText() {
+
+        return webDriver.findElement(By.xpath("//h4[normalize-space()='Added!']")).getText();
+
+    }
+
+    public void clickViewCartLink() {
+        webDriver.findElement(By.xpath("//u[normalize-space()='View Cart']")).click();
+    }
 }
