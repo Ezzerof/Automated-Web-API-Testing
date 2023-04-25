@@ -7,3 +7,4 @@ Feature: As a User, I want to see a confirmation message that I have subscribed
     When I input my email details in the input box
     And click the arrow button
     Then I should see a success popup message
+
