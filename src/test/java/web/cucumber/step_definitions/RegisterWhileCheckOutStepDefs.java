@@ -33,7 +33,8 @@ public class RegisterWhileCheckOutStepDefs {
     private CheckOutPage checkOutPage;
     private PaymentPage paymentPage;
     private LoginPage loginPage;
-    SignUpPage signUpPage;
+   private SignUpPage signUpPage;
+    private AccountDeletionPage accountDeletionPage;
     private final By popUpWindow = new By.ByXPath("//div[@class='modal-content']");
   //  private CartPageStepdefs cartPageStepdefs=new CartPageStepdefs(webDriver);
     Logger logger;
@@ -160,7 +161,7 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
     @When("I enter UserName and Email")
     public void iEnterUserNameAndEmail() {
         loginPage=homePage.goToLoginPage();
-        loginPage.enterUserDetailsForSignUp("Anusha","anu@gmail.com");
+        loginPage.enterUserDetailsForSignUp("Manusri","manusri@gmail.com");
 
     }
 
@@ -189,18 +190,21 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
             e.printStackTrace();
         }
 
-        signUpPage.fillAllRequiredFieldsInForm("Anusha","anu@gmail.com","Gampa","56","Telangana","Hyderabad","555555","3039303930");
+        signUpPage.fillAllRequiredFieldsInForm("Manusri","manusri@123","Gampa","56","Telangana","Hyderabad","555555","3039303930");
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 1000)");
+
     }
 
     @And("I click on create account button")
     public void iClickOnCreateAccountButton() {
-//       signUpPage.clickOnCreateAccountButton();
-        try {
-            Thread.sleep(500);
-            accountCreationPage = signUpPage.createAccount();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    accountCreationPage=signUpPage.clickOnCreateAccountButton();
+//        try {
+//            Thread.sleep(500);
+//            accountCreationPage = signUpPage.createAccount();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
 
@@ -209,28 +213,29 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
     @Then("It should show  ACCOUNT CREATED! and click Continue button")
     public void itShouldShowACCOUNTCREATEDAndClickContinueButton() {
 //        try {
-//            Thread.sleep(500);
+//            Thread.sleep(1000);
 //            accountCreationPage = signUpPage.createAccount();
 //        } catch (InterruptedException e) {
 //            throw new RuntimeException(e);
 //        }
         Assertions.assertEquals("https://automationexercise.com/account_created",accountCreationPage.getUrl());
-        try {
-            Alert alert = webDriver.switchTo().alert();
-            String alertText = alert.getText();
-            alert.dismiss();
-        } catch (NoAlertPresentException e) {
-          e.printStackTrace();
-        }
+//        try {
+//            Alert alert = webDriver.switchTo().alert();
+//            String alertText = alert.getText();
+//            alert.dismiss();
+//        } catch (NoAlertPresentException e) {
+//          e.printStackTrace();
+//        }
        Assertions.assertEquals("ACCOUNT CREATED!",webDriver.findElement(By.xpath("//b[normalize-space()='Account Created!']")).getText());
-
-//webDriver.findElement(By.xpath("//a[normalize-space()='Continue']")).click();
-        try {
-            Thread.sleep(500);
-            homePage = accountCreationPage.continueToHomePage();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0, 500)");
+       webDriver.findElement(By.xpath("//a[normalize-space()='Continue']")).click();
+//        try {
+//            Thread.sleep(500);
+//            homePage = accountCreationPage.continueToHomePage();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @And("it should show Logged in as username at top")
@@ -241,7 +246,7 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
 
     @When("I click on Cart button")
     public void iClickOnCartButton() {
-        homePage.goToCartPage();
+      cartPage= homePage.goToCartPage();
     }
 
     @And("click on Proceed To Checkout' button")
@@ -255,14 +260,16 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
      String showedMobileNumber= webDriver.findElement(By.className("address_phone")).getText();
      String givenMobileNumber="3039303930";
         Assertions.assertEquals(givenMobileNumber,showedMobileNumber);
-    }
+   }
 
 
 
     @When("I Enter description in comment text area and click Place Order")
     public void iEnterDescriptionInCommentTextAreaAndClickPlaceOrder() {
+        JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+        jse.executeScript("window.scrollTo(0,500)");
         checkOutPage.enterDescription("Hi! I love this application...");
-        checkOutPage.clickOnPlaceOrder();
+       paymentPage= checkOutPage.clickOnPlaceOrder();
 
     }
 
@@ -279,14 +286,16 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
 
     @Then("it should show Your order has been placed successfully!")
     public void itShouldShowYourOrderHasBeenPlacedSuccessfully() {
-        Assertions.assertEquals("Congratulations! Your order has been confirmed!",webDriver.findElement(By.xpath("Congratulations! Your order has been confirmed!")).getText());
+        Assertions.assertEquals("Congratulations! Your order has been confirmed!",webDriver.findElement(By.xpath("//p[normalize-space()='Congratulations! Your order has been confirmed!']")).getText());
     }
 
 
 
     @When("I click Delete Account button")
     public void iClickDeleteAccountButton() {
-        webDriver.findElement(By.xpath("//a[normalize-space()='Delete Account']")).click();
+
+        accountDeletionPage = homePage.goToDeletionPage();
+       // webDriver.findElement(By.xpath("//a[normalize-space()='Delete Account']")).click();
     }
 
     @Then("it should show ACCOUNT DELETED! message and click Continue button")

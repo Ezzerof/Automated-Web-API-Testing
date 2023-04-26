@@ -25,8 +25,8 @@ public class SignUpPage {
   public AccountCreationPage createAccount(){
       JavascriptExecutor jse = (JavascriptExecutor)webDriver;
       jse.executeScript("window.scrollTo(0, 1000)");
-   // webDriver.findElement(By.xpath("//button[normalize-space()='Create Account']")).click();
-       webDriver.findElement(By.xpath("/html/body/section/div/div/div/div/form/button")).click();
+   webDriver.findElement(By.xpath("//button[normalize-space()='Create Account']")).click();
+      // webDriver.findElement(By.xpath("/html/body/section/div/div/div/div/form/button")).click();
 
       return new AccountCreationPage(webDriver);
   }
@@ -51,12 +51,13 @@ public class SignUpPage {
 
   }
 
-  public void clickOnCreateAccountButton() {
+  public AccountCreationPage clickOnCreateAccountButton() {
 
       JavascriptExecutor jse = (JavascriptExecutor)webDriver;
       jse.executeScript("window.scrollTo(0, 1100)");
     // waitForElementTobeVisible(createAccountButton);
       webDriver.findElement(By.xpath("//button[normalize-space()='Create Account']")).click();
+  return new AccountCreationPage(webDriver);
   }
 
 

@@ -1,6 +1,7 @@
 package web.cucumber.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class CheckOutPage {
@@ -15,10 +16,12 @@ public class CheckOutPage {
     }
 
     public void enterDescription(String description) {
-        webDriver.findElement(By.xpath("textarea[name='message']")).sendKeys(description);
+
+        webDriver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(description);
 
     }
-    public void clickOnPlaceOrder(){
+    public PaymentPage clickOnPlaceOrder(){
         webDriver.findElement(By.xpath("//a[normalize-space()='Place Order']")).click();
+    return new PaymentPage(webDriver);
     }
 }
