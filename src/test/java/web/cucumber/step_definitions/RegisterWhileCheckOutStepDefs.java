@@ -193,7 +193,6 @@ private static By addToCartButton=new By.ByXPath("//div[@class='col-sm-9 padding
         signUpPage.fillAllRequiredFieldsInForm("Manusri","manusri@123","Gampa","56","Telangana","Hyderabad","555555","3039303930");
         JavascriptExecutor jse = (JavascriptExecutor)webDriver;
         jse.executeScript("window.scrollTo(0, 1000)");
-
     }
 
     @And("I click on create account button")
