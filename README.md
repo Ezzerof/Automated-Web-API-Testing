@@ -25,18 +25,18 @@ The goal of this project is to test the functionality of the website https://aut
 ## Project Roles:
 
 
-| Role         | Contributor         | Contact                         |
-|--------------|---------------------|---------------------------------|
-| Scrum Master | Katie Olivia Hulme  | katiehulme@spartaglobal.com     |
-| GitHub Lead  | Cristian Bitca      | cbitca@spartaglobal.com         |
-| Dev/Tester   | Anusha Gampa        | agampa@spartaglobal.com         |
-| Dev/Tester   | Chloe Vera Turner   | cturner@spartaglobal.com        |
-| Dev/Tester   | Sahan Seneviratne   | sseneviratne@spartaglobal.com   |
-| Dev/Tester   | Marcella chessa     | mchessa@spartaglobal.com        |
-| Dev/Tester   | Abubakar Muhammad   | amuhammad@spartaglobal.com      |
-| Dev/Tester   | James Reed          | jreed@spartaglobal.com          |
-| Dev/Tester   | Rafael Lopes        | rlopes@spartaglobal.com         |
-| Dev/Tester   | Ajay Balakrishnan   | abalakrishnan@spartaglobal.com  |
+| Role         | Contributor        | Contact                         |
+|--------------|--------------------|---------------------------------|
+| Scrum Master | Anusha Gampa       | agampa@spartaglobal.com         |
+| GitHub Lead  | Cristian Bitca     | cbitca@spartaglobal.com         |
+| Dev/Tester   | Katie Olivia Hulme |  katiehulme@spartaglobal.com    |
+| Dev/Tester   | Chloe Vera Turner  | cturner@spartaglobal.com        |
+| Dev/Tester   | Sahan Seneviratne  | sseneviratne@spartaglobal.com   |
+| Dev/Tester   | Marcella chessa    | mchessa@spartaglobal.com        |
+| Dev/Tester   | Abubakar Muhammad  | amuhammad@spartaglobal.com      |
+| Dev/Tester   | James Reed         | jreed@spartaglobal.com          |
+| Dev/Tester   | Rafael Lopes       | rlopes@spartaglobal.com         |
+| Dev/Tester   | Ajay Balakrishnan  | abalakrishnan@spartaglobal.com  |
 
 
 ## **Details of the Functionality in Major Sections:**
