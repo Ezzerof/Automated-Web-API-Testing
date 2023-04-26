@@ -24,4 +24,14 @@ public class LoginPage {
         return new SignUpPage(webDriver);
     }
 
+    public void enterUserDetailsForSignUp(String name, String email) {
+        webDriver.findElement(By.name("name")).sendKeys(name);
+        webDriver.findElement(By.xpath("/html/body/section/div/div/div[3]/div/form/input[3]")).sendKeys(email);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

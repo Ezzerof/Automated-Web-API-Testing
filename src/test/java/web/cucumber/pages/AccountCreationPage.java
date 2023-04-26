@@ -19,4 +19,6 @@ public class AccountCreationPage {
     webDriver.findElement(By.xpath("/html/body/section/div/div/div/div/a")).click();
     return new HomePage(webDriver);
   }
+
+
 }
